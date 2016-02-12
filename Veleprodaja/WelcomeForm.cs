@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Veleprodaja.view_dodaj;
 
 namespace Veleprodaja
 {
@@ -70,6 +71,12 @@ namespace Veleprodaja
             otvorenaFormaZaDodavanje = new MjestoDodajForm();
             otvorenaFormaZaDodavanje.ShowDialog();
             otvorenaFormaZaDodavanje = null;
+        }
+
+        private void novaKalkulacijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KalkulacijaDodajForm kdf = new KalkulacijaDodajForm();
+            kdf.ShowDialog();
         }
     }
 }

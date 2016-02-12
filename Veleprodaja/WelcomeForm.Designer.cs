@@ -198,6 +198,7 @@
             this.novaKalkulacijaToolStripMenuItem.Name = "novaKalkulacijaToolStripMenuItem";
             this.novaKalkulacijaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.novaKalkulacijaToolStripMenuItem.Text = "Nova kalkulacija";
+            this.novaKalkulacijaToolStripMenuItem.Click += new System.EventHandler(this.novaKalkulacijaToolStripMenuItem_Click);
             // 
             // pregledSvihKalkulacijaToolStripMenuItem
             // 
