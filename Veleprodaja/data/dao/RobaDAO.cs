@@ -10,6 +10,8 @@ namespace Veleprodaja.data.dao
     public interface RobaDAO
     {
         List<RobaDTO> getAll();
+        RobaDTO getBySifra(int sifra);
         int insert(RobaDTO roba);
+        int update(RobaDTO roba,int staraSifra);
     }
 }

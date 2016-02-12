@@ -11,7 +11,9 @@ namespace Veleprodaja.data.dao.MySqlDao
     public class MySqlRobaDAO:RobaDAO
     {
         private string qGetAll = "select * from roba_sa_jedinicom_mjere;";
+        private string qGetBySifra="select * from roba_sa_jedinicom_mjere where SifraRoba=?sifra;";
         private string qInsert = "INSERT INTO `veleprodaja`.`roba` (`SifraRoba`, `Naziv`, `SifraJediniceMjere`) VALUES (?sifra, ?naziv, ?jm);";
+        private string qUpdate = "UPDATE `veleprodaja`.`roba` SET `SifraRoba`=?sifra, `Naziv`=?naziv, `SifraJediniceMjere`=?jm WHERE `SifraRoba`=?staraSifra;";
 
         public List<RobaDTO> getAll()
         {
@@ -42,6 +44,38 @@ namespace Veleprodaja.data.dao.MySqlDao
             int id=command.ExecuteNonQuery();
             ConnectionPool.checkInConnection(connection);
             return id;
+        }
+
+        public int update(RobaDTO roba,int staraSifra)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qUpdate;
+            command.Parameters.AddWithValue("sifra", roba.SifraRoba);
+            command.Parameters.AddWithValue("naziv", roba.Naziv);
+            command.Parameters.AddWithValue("jm", roba.JedinicaMjere.SifraJediniceMjere);
+            command.Parameters.AddWithValue("staraSifra", staraSifra);
+            int id = command.ExecuteNonQuery();
+            ConnectionPool.checkInConnection(connection);
+            return id;
+        }
+
+        public RobaDTO getBySifra(int sifra)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qGetBySifra;
+            command.Parameters.AddWithValue("sifra", sifra);
+            MySqlDataReader reader = command.ExecuteReader();
+            RobaDTO roba = null;
+            if (reader.Read())
+            {
+                roba = readerToRobaDTO(reader);
+                roba.JedinicaMjere = MySqlJedinicaMjereDAO.readerToJedinicaMjereDTO(reader);
+            }
+            reader.Close();
+            ConnectionPool.checkInConnection(connection);
+            return roba;
         }
 
         public static RobaDTO readerToRobaDTO(MySqlDataReader reader)

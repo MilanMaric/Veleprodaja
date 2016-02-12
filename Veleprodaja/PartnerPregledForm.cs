@@ -63,6 +63,7 @@ namespace Veleprodaja
         {
            //4
                 Console.Write(e.ColumnIndex);
+                
         }
 
 

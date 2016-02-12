@@ -13,12 +13,19 @@ namespace Veleprodaja
 {
     public partial class RobaDodajForm : DodajForm
     {
+        private RobaDTO roba = null;
         public RobaDodajForm()
         {
             InitializeComponent();
             VeleprodajaUtil.initJedinicaMjereComboBox(cbJedinicaMjere);
         }
 
+        public RobaDodajForm(RobaDTO roba)
+        {
+            InitializeComponent();
+            this.roba = roba;
+            fillControls();
+        }
         private RobaDTO fillObject()
         {
             RobaDTO roba = new RobaDTO();
@@ -28,15 +35,37 @@ namespace Veleprodaja
             return roba;
         }
 
+        private void fillControls()
+        {
+            tbxSifra.Text = roba.SifraRoba.ToString();
+            tbxNaziv.Text = roba.Naziv;
+            VeleprodajaUtil.initJedinicaMjereComboBox(cbJedinicaMjere, roba.JedinicaMjere.SifraJediniceMjere);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            RobaDTO roba = fillObject();
-            int id=VeleprodajaUtil.getDAOFactory().getRobaDAO().insert(roba);
-            lblUspjesnoSacuvana.Visible = true;
-            if (id > 0)
+            if (roba == null)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                roba = fillObject();
+                int rows = VeleprodajaUtil.getDAOFactory().getRobaDAO().insert(roba);
+                lblUspjesnoSacuvana.Visible = true;
+                if (rows > 0)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+            {
+                int staraSifra = roba.SifraRoba;
+                roba = fillObject();
+                int rows = VeleprodajaUtil.getDAOFactory().getRobaDAO().update(roba,staraSifra);
+                lblUspjesnoSacuvana.Visible = true;
+                if (rows > 0)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
     }

@@ -36,5 +36,19 @@ namespace Veleprodaja
                 cb.Items.Add(mjesto);
             }
         }
+
+        internal static void initJedinicaMjereComboBox(ComboBox cb, string sifra)
+        {
+            cb.Items.Clear();
+            List<JedinicaMjereDTO> lista = VeleprodajaUtil.getDAOFactory().getJedinicaMjereDAO().getAll();
+            foreach (JedinicaMjereDTO jedinica in lista)
+            {
+                cb.Items.Add(jedinica);
+                if (jedinica.SifraJediniceMjere.Equals(sifra))
+                {
+                    cb.SelectedIndex = cb.Items.Count - 1;
+                }
+            }
+        }
     }
 }
