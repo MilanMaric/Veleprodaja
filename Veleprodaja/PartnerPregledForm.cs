@@ -52,11 +52,23 @@ namespace Veleprodaja
             col.HeaderText = "Mjesto";
             col.FillWeight = 80;
             dgPregled.Columns.Add(col);
+            col = new DataGridViewButtonColumn();
+            col.Name = "colIzmjeni";
+            col.HeaderText = "Izmjeni";
+            dgPregled.Columns.Add(col);
+            dgPregled.CellContentClick += new DataGridViewCellEventHandler(cellContentClick);
         }
+
+        private void cellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           //4
+                Console.Write(e.ColumnIndex);
+        }
+
 
         private void partnerToRow(PartnerDTO partner)
         {
-            dgPregled.Rows.Add(new object[] { partner.Jib, partner.Naziv, partner.Adresa,partner.Mjesto.Naziv});
+            dgPregled.Rows.Add(new object[] { partner.Jib, partner.Naziv, partner.Adresa,partner.Mjesto.Naziv,"Izmjeni"});
         }
 
         private void fillAllPartners()

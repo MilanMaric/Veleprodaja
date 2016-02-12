@@ -19,10 +19,6 @@ namespace Veleprodaja
             VeleprodajaUtil.initMjestoComboBox(cbMjesto);
         }
 
-        public PartnerDodajForm(PartnerDTO partner)
-        {
-
-        }
 
         private void btnDodajMjesto_Click(object sender, EventArgs e)
         {

@@ -157,9 +157,9 @@
             // 
             // btnDodajMjesto
             // 
-            this.btnDodajMjesto.Location = new System.Drawing.Point(337, 346);
+            this.btnDodajMjesto.Location = new System.Drawing.Point(337, 345);
             this.btnDodajMjesto.Name = "btnDodajMjesto";
-            this.btnDodajMjesto.Size = new System.Drawing.Size(48, 23);
+            this.btnDodajMjesto.Size = new System.Drawing.Size(48, 21);
             this.btnDodajMjesto.TabIndex = 14;
             this.btnDodajMjesto.Text = "+";
             this.btnDodajMjesto.UseVisualStyleBackColor = true;
