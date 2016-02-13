@@ -31,5 +31,10 @@ namespace Veleprodaja.data.dao.MySqlDao
         {
             return new MySqlKalkulacijaDAO();
         }
+
+        public override StavkaKalkulacijeDAO getStavkaKalkulacijeDAO()
+        {
+            return new MySqlStavkaKalkulacijeDAO();
+        }
     }
 }

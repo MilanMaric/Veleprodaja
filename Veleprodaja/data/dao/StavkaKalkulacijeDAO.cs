@@ -7,10 +7,10 @@ using Veleprodaja.data.dto;
 
 namespace Veleprodaja.data.dao
 {
-    public interface KalkulacijaDAO
+    public interface StavkaKalkulacijeDAO
     {
-        List<KalkulacijaDTO> getAll();
-        int insert(KalkulacijaDTO kalkulacija);
-        void updateObjectIznos(KalkulacijaDTO kalkulacija);
+        List<StavkaKalkulacijeDTO> getByKalkulacija(KalkulacijaDTO kalkulacija);
+
+        int insert(StavkaKalkulacijeDTO stavka);
     }
 }

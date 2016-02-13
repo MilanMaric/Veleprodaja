@@ -56,9 +56,11 @@
     <Compile Include="data\dao\MySqlDao\MySqlMjestoDAO.cs" />
     <Compile Include="data\dao\MySqlDao\MySqlPartnerDAO.cs" />
     <Compile Include="data\dao\MySqlDao\MySqlRobaDAO.cs" />
+    <Compile Include="data\dao\MySqlDao\MySqlStavkaKalkulacijeDAO.cs" />
     <Compile Include="data\dao\MySqlDao\MySqlStavkaKnjigeTrgovineNaVeliko.cs" />
     <Compile Include="data\dao\PartnerDAO.cs" />
     <Compile Include="data\dao\RobaDAO.cs" />
+    <Compile Include="data\dao\StavkaKalkulacijeDAO.cs" />
     <Compile Include="data\dao\StavkaKnjigeTrgovineNaVelikoDAO.cs" />
     <Compile Include="data\dto\BankaDTO.cs" />
     <Compile Include="data\dto\JedinicaMjereDTO.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="data\dto\MjestoDTO.cs" />
     <Compile Include="data\dto\PartnerDTO.cs" />
     <Compile Include="data\dto\RobaDTO.cs" />
+    <Compile Include="data\dto\StavkaKalkulacijeDTO.cs" />
     <Compile Include="data\dto\StavkaKnjigeTrgovineNaVelikoDTO.cs" />
     <Compile Include="data\dto\ZiroRacunDTO.cs" />
     <Compile Include="DodajForm.cs">

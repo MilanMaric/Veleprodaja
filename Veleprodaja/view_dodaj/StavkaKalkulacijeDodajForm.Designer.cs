@@ -32,33 +32,41 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbIzabranaRoba = new System.Windows.Forms.GroupBox();
             this.lblRobaJedinicaMjere = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblRobaNaziv = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbxKolicina = new System.Windows.Forms.TextBox();
+            this.tbxNabavnaCijena = new System.Windows.Forms.TextBox();
+            this.tbxRabat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.tbxVeleprodajnaCijena = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbKalkulacija = new System.Windows.Forms.GroupBox();
+            this.lblKalRUC = new System.Windows.Forms.Label();
+            this.lblKalNabavna = new System.Windows.Forms.Label();
+            this.lblKalVeleprodajni = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblDobavljacKalkulacije = new System.Windows.Forms.Label();
+            this.lblDatumKalkulacije = new System.Windows.Forms.Label();
+            this.lblRedniBrojKalkulacije = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.dgPredhodneKalkulacije = new System.Windows.Forms.DataGridView();
+            this.dgStavke = new System.Windows.Forms.DataGridView();
+            this.colObject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKolicina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNabavnaCijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVeleprodajnaCijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbStavka = new System.Windows.Forms.GroupBox();
             this.btnDodaj = new System.Windows.Forms.Button();
-            this.lblRedniBrojKalkulacije = new System.Windows.Forms.Label();
-            this.lblDatumKalkulacije = new System.Windows.Forms.Label();
-            this.lblDobavljacKalkulacije = new System.Windows.Forms.Label();
             this.gbIzabranaRoba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -69,16 +77,9 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.gbKalkulacija.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgStavke)).BeginInit();
+            this.gbStavka.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnSacuvaj
-            // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(721, 433);
-            // 
-            // btnOdustani
-            // 
-            this.btnOdustani.Location = new System.Drawing.Point(626, 433);
             // 
             // tbxSifraRobe
             // 
@@ -100,13 +101,12 @@
             // gbIzabranaRoba
             // 
             this.gbIzabranaRoba.Controls.Add(this.lblRobaJedinicaMjere);
-            this.gbIzabranaRoba.Controls.Add(this.button1);
             this.gbIzabranaRoba.Controls.Add(this.lblRobaNaziv);
             this.gbIzabranaRoba.Controls.Add(this.label4);
             this.gbIzabranaRoba.Controls.Add(this.label3);
-            this.gbIzabranaRoba.Location = new System.Drawing.Point(15, 69);
+            this.gbIzabranaRoba.Location = new System.Drawing.Point(15, 62);
             this.gbIzabranaRoba.Name = "gbIzabranaRoba";
-            this.gbIzabranaRoba.Size = new System.Drawing.Size(291, 104);
+            this.gbIzabranaRoba.Size = new System.Drawing.Size(332, 104);
             this.gbIzabranaRoba.TabIndex = 4;
             this.gbIzabranaRoba.TabStop = false;
             this.gbIzabranaRoba.Text = "Izabrana roba";
@@ -114,25 +114,16 @@
             // lblRobaJedinicaMjere
             // 
             this.lblRobaJedinicaMjere.AutoSize = true;
-            this.lblRobaJedinicaMjere.Location = new System.Drawing.Point(88, 56);
+            this.lblRobaJedinicaMjere.Location = new System.Drawing.Point(224, 57);
             this.lblRobaJedinicaMjere.Name = "lblRobaJedinicaMjere";
             this.lblRobaJedinicaMjere.Size = new System.Drawing.Size(35, 13);
             this.lblRobaJedinicaMjere.TabIndex = 6;
             this.lblRobaJedinicaMjere.Text = "label5";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(210, 74);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Izmjeni robu";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // lblRobaNaziv
             // 
             this.lblRobaNaziv.AutoSize = true;
-            this.lblRobaNaziv.Location = new System.Drawing.Point(49, 28);
+            this.lblRobaNaziv.Location = new System.Drawing.Point(224, 35);
             this.lblRobaNaziv.Name = "lblRobaNaziv";
             this.lblRobaNaziv.Size = new System.Drawing.Size(35, 13);
             this.lblRobaNaziv.TabIndex = 3;
@@ -150,37 +141,37 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 28);
+            this.label3.Location = new System.Drawing.Point(5, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Naziv:";
             // 
-            // textBox2
+            // tbxKolicina
             // 
-            this.textBox2.Location = new System.Drawing.Point(106, 214);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 5;
+            this.tbxKolicina.Location = new System.Drawing.Point(129, 22);
+            this.tbxKolicina.Name = "tbxKolicina";
+            this.tbxKolicina.Size = new System.Drawing.Size(203, 20);
+            this.tbxKolicina.TabIndex = 5;
             // 
-            // textBox3
+            // tbxNabavnaCijena
             // 
-            this.textBox3.Location = new System.Drawing.Point(106, 253);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 6;
+            this.tbxNabavnaCijena.Location = new System.Drawing.Point(129, 61);
+            this.tbxNabavnaCijena.Name = "tbxNabavnaCijena";
+            this.tbxNabavnaCijena.Size = new System.Drawing.Size(203, 20);
+            this.tbxNabavnaCijena.TabIndex = 6;
             // 
-            // textBox4
+            // tbxRabat
             // 
-            this.textBox4.Location = new System.Drawing.Point(106, 292);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 20);
-            this.textBox4.TabIndex = 7;
+            this.tbxRabat.Location = new System.Drawing.Point(129, 96);
+            this.tbxRabat.Name = "tbxRabat";
+            this.tbxRabat.Size = new System.Drawing.Size(203, 20);
+            this.tbxRabat.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 221);
+            this.label2.Location = new System.Drawing.Point(6, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 8;
@@ -189,7 +180,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 256);
+            this.label5.Location = new System.Drawing.Point(6, 64);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 9;
@@ -198,7 +189,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 298);
+            this.label6.Location = new System.Drawing.Point(6, 99);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 10;
@@ -207,59 +198,23 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 330);
+            this.label7.Location = new System.Drawing.Point(6, 138);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 13);
+            this.label7.Size = new System.Drawing.Size(100, 13);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Neto nabavna cijena";
+            this.label7.Text = "Veleprodajna cijena";
             // 
-            // label8
+            // tbxVeleprodajnaCijena
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(271, 330);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "label8";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 365);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 13);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Veleprodajna cijena";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(121, 358);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(185, 20);
-            this.textBox5.TabIndex = 14;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 393);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Razlika u cijeni";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(265, 393);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "label11";
+            this.tbxVeleprodajnaCijena.Location = new System.Drawing.Point(129, 135);
+            this.tbxVeleprodajnaCijena.Name = "tbxVeleprodajnaCijena";
+            this.tbxVeleprodajnaCijena.Size = new System.Drawing.Size(203, 20);
+            this.tbxVeleprodajnaCijena.TabIndex = 14;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -268,24 +223,12 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnDodaj);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.label11);
             this.splitContainer1.Panel2.Controls.Add(this.tbxSifraRobe);
-            this.splitContainer1.Panel2.Controls.Add(this.label10);
             this.splitContainer1.Panel2.Controls.Add(this.gbIzabranaRoba);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox5);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.label9);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox3);
-            this.splitContainer1.Panel2.Controls.Add(this.label8);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox4);
-            this.splitContainer1.Panel2.Controls.Add(this.label7);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Size = new System.Drawing.Size(801, 461);
-            this.splitContainer1.SplitterDistance = 458;
+            this.splitContainer1.Panel2.Controls.Add(this.gbStavka);
+            this.splitContainer1.Size = new System.Drawing.Size(861, 482);
+            this.splitContainer1.SplitterDistance = 492;
             this.splitContainer1.TabIndex = 17;
             // 
             // splitContainer2
@@ -301,13 +244,19 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.dgPredhodneKalkulacije);
-            this.splitContainer2.Size = new System.Drawing.Size(458, 461);
-            this.splitContainer2.SplitterDistance = 181;
+            this.splitContainer2.Panel2.Controls.Add(this.dgStavke);
+            this.splitContainer2.Size = new System.Drawing.Size(492, 482);
+            this.splitContainer2.SplitterDistance = 188;
             this.splitContainer2.TabIndex = 0;
             // 
             // gbKalkulacija
             // 
+            this.gbKalkulacija.Controls.Add(this.lblKalRUC);
+            this.gbKalkulacija.Controls.Add(this.lblKalNabavna);
+            this.gbKalkulacija.Controls.Add(this.lblKalVeleprodajni);
+            this.gbKalkulacija.Controls.Add(this.label17);
+            this.gbKalkulacija.Controls.Add(this.label16);
+            this.gbKalkulacija.Controls.Add(this.label15);
             this.gbKalkulacija.Controls.Add(this.lblDobavljacKalkulacije);
             this.gbKalkulacija.Controls.Add(this.lblDatumKalkulacije);
             this.gbKalkulacija.Controls.Add(this.lblRedniBrojKalkulacije);
@@ -316,15 +265,96 @@
             this.gbKalkulacija.Controls.Add(this.label12);
             this.gbKalkulacija.Location = new System.Drawing.Point(12, 12);
             this.gbKalkulacija.Name = "gbKalkulacija";
-            this.gbKalkulacija.Size = new System.Drawing.Size(409, 126);
+            this.gbKalkulacija.Size = new System.Drawing.Size(409, 154);
             this.gbKalkulacija.TabIndex = 0;
             this.gbKalkulacija.TabStop = false;
             this.gbKalkulacija.Text = "Podaci o kalkulaciji";
             // 
+            // lblKalRUC
+            // 
+            this.lblKalRUC.AutoSize = true;
+            this.lblKalRUC.Location = new System.Drawing.Point(129, 129);
+            this.lblKalRUC.Name = "lblKalRUC";
+            this.lblKalRUC.Size = new System.Drawing.Size(41, 13);
+            this.lblKalRUC.TabIndex = 11;
+            this.lblKalRUC.Text = "label20";
+            // 
+            // lblKalNabavna
+            // 
+            this.lblKalNabavna.AutoSize = true;
+            this.lblKalNabavna.Location = new System.Drawing.Point(129, 107);
+            this.lblKalNabavna.Name = "lblKalNabavna";
+            this.lblKalNabavna.Size = new System.Drawing.Size(41, 13);
+            this.lblKalNabavna.TabIndex = 10;
+            this.lblKalNabavna.Text = "label19";
+            // 
+            // lblKalVeleprodajni
+            // 
+            this.lblKalVeleprodajni.AutoSize = true;
+            this.lblKalVeleprodajni.Location = new System.Drawing.Point(129, 85);
+            this.lblKalVeleprodajni.Name = "lblKalVeleprodajni";
+            this.lblKalVeleprodajni.Size = new System.Drawing.Size(41, 13);
+            this.lblKalVeleprodajni.TabIndex = 9;
+            this.lblKalVeleprodajni.Text = "label18";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(18, 129);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Razlika u cijeni";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(18, 107);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Nabavna vrijednost";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(18, 85);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Veleprodajni iznos:";
+            // 
+            // lblDobavljacKalkulacije
+            // 
+            this.lblDobavljacKalkulacije.AutoSize = true;
+            this.lblDobavljacKalkulacije.Location = new System.Drawing.Point(129, 63);
+            this.lblDobavljacKalkulacije.Name = "lblDobavljacKalkulacije";
+            this.lblDobavljacKalkulacije.Size = new System.Drawing.Size(41, 13);
+            this.lblDobavljacKalkulacije.TabIndex = 5;
+            this.lblDobavljacKalkulacije.Text = "label17";
+            // 
+            // lblDatumKalkulacije
+            // 
+            this.lblDatumKalkulacije.AutoSize = true;
+            this.lblDatumKalkulacije.Location = new System.Drawing.Point(129, 41);
+            this.lblDatumKalkulacije.Name = "lblDatumKalkulacije";
+            this.lblDatumKalkulacije.Size = new System.Drawing.Size(41, 13);
+            this.lblDatumKalkulacije.TabIndex = 4;
+            this.lblDatumKalkulacije.Text = "label16";
+            // 
+            // lblRedniBrojKalkulacije
+            // 
+            this.lblRedniBrojKalkulacije.AutoSize = true;
+            this.lblRedniBrojKalkulacije.Location = new System.Drawing.Point(129, 19);
+            this.lblRedniBrojKalkulacije.Name = "lblRedniBrojKalkulacije";
+            this.lblRedniBrojKalkulacije.Size = new System.Drawing.Size(41, 13);
+            this.lblRedniBrojKalkulacije.TabIndex = 3;
+            this.lblRedniBrojKalkulacije.Text = "label15";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 60);
+            this.label14.Location = new System.Drawing.Point(18, 63);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(58, 13);
             this.label14.TabIndex = 2;
@@ -333,7 +363,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 40);
+            this.label13.Location = new System.Drawing.Point(18, 41);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 13);
             this.label13.TabIndex = 1;
@@ -342,77 +372,112 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 20);
+            this.label12.Location = new System.Drawing.Point(18, 19);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(58, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Redni broj:";
             // 
-            // dgPredhodneKalkulacije
+            // dgStavke
             // 
-            this.dgPredhodneKalkulacije.AllowUserToAddRows = false;
-            this.dgPredhodneKalkulacije.AllowUserToDeleteRows = false;
-            this.dgPredhodneKalkulacije.AllowUserToOrderColumns = true;
-            this.dgPredhodneKalkulacije.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgPredhodneKalkulacije.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgPredhodneKalkulacije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPredhodneKalkulacije.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgPredhodneKalkulacije.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgPredhodneKalkulacije.Location = new System.Drawing.Point(0, 0);
-            this.dgPredhodneKalkulacije.Name = "dgPredhodneKalkulacije";
-            this.dgPredhodneKalkulacije.ReadOnly = true;
-            this.dgPredhodneKalkulacije.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgPredhodneKalkulacije.RowHeadersVisible = false;
-            this.dgPredhodneKalkulacije.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPredhodneKalkulacije.Size = new System.Drawing.Size(458, 276);
-            this.dgPredhodneKalkulacije.TabIndex = 13;
+            this.dgStavke.AllowUserToAddRows = false;
+            this.dgStavke.AllowUserToDeleteRows = false;
+            this.dgStavke.AllowUserToOrderColumns = true;
+            this.dgStavke.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgStavke.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgStavke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgStavke.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colObject,
+            this.colNaziv,
+            this.colKolicina,
+            this.colNabavnaCijena,
+            this.colRabat,
+            this.colVeleprodajnaCijena});
+            this.dgStavke.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgStavke.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgStavke.Location = new System.Drawing.Point(0, 0);
+            this.dgStavke.Name = "dgStavke";
+            this.dgStavke.ReadOnly = true;
+            this.dgStavke.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgStavke.RowHeadersVisible = false;
+            this.dgStavke.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgStavke.Size = new System.Drawing.Size(492, 290);
+            this.dgStavke.TabIndex = 13;
+            // 
+            // colObject
+            // 
+            this.colObject.HeaderText = "Column1";
+            this.colObject.Name = "colObject";
+            this.colObject.ReadOnly = true;
+            this.colObject.Visible = false;
+            // 
+            // colNaziv
+            // 
+            this.colNaziv.HeaderText = "Naziv";
+            this.colNaziv.Name = "colNaziv";
+            this.colNaziv.ReadOnly = true;
+            // 
+            // colKolicina
+            // 
+            this.colKolicina.HeaderText = "Kolicina";
+            this.colKolicina.Name = "colKolicina";
+            this.colKolicina.ReadOnly = true;
+            // 
+            // colNabavnaCijena
+            // 
+            this.colNabavnaCijena.HeaderText = "Nabavna Cijena";
+            this.colNabavnaCijena.Name = "colNabavnaCijena";
+            this.colNabavnaCijena.ReadOnly = true;
+            // 
+            // colRabat
+            // 
+            this.colRabat.HeaderText = "Rabat";
+            this.colRabat.Name = "colRabat";
+            this.colRabat.ReadOnly = true;
+            // 
+            // colVeleprodajnaCijena
+            // 
+            this.colVeleprodajnaCijena.HeaderText = "VeleprodajnaCijena";
+            this.colVeleprodajnaCijena.Name = "colVeleprodajnaCijena";
+            this.colVeleprodajnaCijena.ReadOnly = true;
+            // 
+            // gbStavka
+            // 
+            this.gbStavka.Controls.Add(this.btnDodaj);
+            this.gbStavka.Controls.Add(this.tbxVeleprodajnaCijena);
+            this.gbStavka.Controls.Add(this.label7);
+            this.gbStavka.Controls.Add(this.tbxRabat);
+            this.gbStavka.Controls.Add(this.tbxNabavnaCijena);
+            this.gbStavka.Controls.Add(this.label6);
+            this.gbStavka.Controls.Add(this.tbxKolicina);
+            this.gbStavka.Controls.Add(this.label5);
+            this.gbStavka.Controls.Add(this.label2);
+            this.gbStavka.Location = new System.Drawing.Point(15, 192);
+            this.gbStavka.Name = "gbStavka";
+            this.gbStavka.Size = new System.Drawing.Size(338, 206);
+            this.gbStavka.TabIndex = 18;
+            this.gbStavka.TabStop = false;
+            this.gbStavka.Text = "Podaci o stavki";
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(231, 426);
+            this.btnDodaj.Location = new System.Drawing.Point(257, 177);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(75, 23);
+            this.btnDodaj.Size = new System.Drawing.Size(75, 20);
             this.btnDodaj.TabIndex = 17;
             this.btnDodaj.Text = "Dodaj stavku";
             this.btnDodaj.UseVisualStyleBackColor = true;
-            // 
-            // lblRedniBrojKalkulacije
-            // 
-            this.lblRedniBrojKalkulacije.AutoSize = true;
-            this.lblRedniBrojKalkulacije.Location = new System.Drawing.Point(74, 20);
-            this.lblRedniBrojKalkulacije.Name = "lblRedniBrojKalkulacije";
-            this.lblRedniBrojKalkulacije.Size = new System.Drawing.Size(41, 13);
-            this.lblRedniBrojKalkulacije.TabIndex = 3;
-            this.lblRedniBrojKalkulacije.Text = "label15";
-            // 
-            // lblDatumKalkulacije
-            // 
-            this.lblDatumKalkulacije.AutoSize = true;
-            this.lblDatumKalkulacije.Location = new System.Drawing.Point(74, 40);
-            this.lblDatumKalkulacije.Name = "lblDatumKalkulacije";
-            this.lblDatumKalkulacije.Size = new System.Drawing.Size(41, 13);
-            this.lblDatumKalkulacije.TabIndex = 4;
-            this.lblDatumKalkulacije.Text = "label16";
-            // 
-            // lblDobavljacKalkulacije
-            // 
-            this.lblDobavljacKalkulacije.AutoSize = true;
-            this.lblDobavljacKalkulacije.Location = new System.Drawing.Point(74, 60);
-            this.lblDobavljacKalkulacije.Name = "lblDobavljacKalkulacije";
-            this.lblDobavljacKalkulacije.Size = new System.Drawing.Size(41, 13);
-            this.lblDobavljacKalkulacije.TabIndex = 5;
-            this.lblDobavljacKalkulacije.Text = "label17";
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // StavkaKalkulacijeDodajForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 461);
+            this.ClientSize = new System.Drawing.Size(861, 506);
             this.Controls.Add(this.splitContainer1);
             this.Name = "StavkaKalkulacijeDodajForm";
             this.Text = "StavkaKalkulacijeDodajForm";
-            this.Controls.SetChildIndex(this.btnSacuvaj, 0);
-            this.Controls.SetChildIndex(this.btnOdustani, 0);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             this.gbIzabranaRoba.ResumeLayout(false);
             this.gbIzabranaRoba.PerformLayout();
@@ -427,8 +492,11 @@
             this.splitContainer2.ResumeLayout(false);
             this.gbKalkulacija.ResumeLayout(false);
             this.gbKalkulacija.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgStavke)).EndInit();
+            this.gbStavka.ResumeLayout(false);
+            this.gbStavka.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -438,25 +506,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbIzabranaRoba;
         private System.Windows.Forms.Label lblRobaJedinicaMjere;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblRobaNaziv;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbxKolicina;
+        private System.Windows.Forms.TextBox tbxNabavnaCijena;
+        private System.Windows.Forms.TextBox tbxRabat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbxVeleprodajnaCijena;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnDodaj;
-        protected System.Windows.Forms.DataGridView dgPredhodneKalkulacije;
+        protected System.Windows.Forms.DataGridView dgStavke;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox gbKalkulacija;
         private System.Windows.Forms.Label label14;
@@ -465,5 +528,18 @@
         private System.Windows.Forms.Label lblDobavljacKalkulacije;
         private System.Windows.Forms.Label lblDatumKalkulacije;
         private System.Windows.Forms.Label lblRedniBrojKalkulacije;
+        private System.Windows.Forms.Label lblKalRUC;
+        private System.Windows.Forms.Label lblKalNabavna;
+        private System.Windows.Forms.Label lblKalVeleprodajni;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colObject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNaziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKolicina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNabavnaCijena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRabat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVeleprodajnaCijena;
+        private System.Windows.Forms.GroupBox gbStavka;
     }
 }

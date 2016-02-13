@@ -13,5 +13,6 @@ namespace Veleprodaja.data.dao
         public abstract JedinicaMjereDAO getJedinicaMjereDAO();
         public abstract MjestoDAO getMjestoDAO();
         public abstract KalkulacijaDAO getKalkulacijaDAO();
+        public abstract StavkaKalkulacijeDAO getStavkaKalkulacijeDAO();
     }
 }

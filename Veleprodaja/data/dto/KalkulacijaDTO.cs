@@ -28,6 +28,27 @@ namespace Veleprodaja.data.dto
             get { return brojFaktureDobavljaca; }
             set { brojFaktureDobavljaca = value; }
         }
+        private double veleprodajnaVrijednost;
+
+        public double VeleprodajnaVrijednost
+        {
+            get { return veleprodajnaVrijednost; }
+            set { veleprodajnaVrijednost = value; }
+        }
+        private double netoNabavnaVrijednost;
+
+        public double NetoNabavnaVrijednost
+        {
+            get { return netoNabavnaVrijednost; }
+            set { netoNabavnaVrijednost = value; }
+        }
+        private double razlikaUCijeni;
+
+        public double RazlikaUCijeni
+        {
+            get { return razlikaUCijeni; }
+            set { razlikaUCijeni = value; }
+        }
 
     }
 }
