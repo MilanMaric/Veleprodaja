@@ -59,6 +59,7 @@ namespace Veleprodaja.view_dodaj
             gbIzabranaRoba.Show();
             lblRobaNaziv.Text = izabranaRoba.Naziv;
             lblRobaJedinicaMjere.Text = izabranaRoba.JedinicaMjere.ToString();
+            tbxSifraRobe.Text = "";
         }
 
         private void tbxSifraRobe_Leave(object sender, EventArgs e)
@@ -104,6 +105,7 @@ namespace Veleprodaja.view_dodaj
                     fillObject(stavka);
                     VeleprodajaUtil.getDAOFactory().getStavkaKalkulacijeDAO().insert(stavka);
                     fillStavke();
+                    fillKalkulacijaValues();
                     emptyControlls();
                 }
             }

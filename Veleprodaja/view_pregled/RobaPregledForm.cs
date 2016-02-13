@@ -52,6 +52,10 @@ namespace Veleprodaja
         private void initRobaKolone()
         {
             DataGridViewColumn col = new DataGridViewTextBoxColumn();
+            col.Name = "colObject";
+            col.Visible = false;
+            dgPregled.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
             col.Name = "colSifra";
             col.HeaderText = "Sifra robe";
             col.FillWeight = 50;
@@ -86,19 +90,19 @@ namespace Veleprodaja
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 4)
             {
                 if (e.RowIndex >= 0)
                 {
                     if (p == null)
                     {
-                        RobaDodajForm rdf = new RobaDodajForm(VeleprodajaUtil.getDAOFactory().getRobaDAO().getBySifra(int.Parse(dgPregled.Rows[e.RowIndex].Cells["colSifra"].Value.ToString())));
+                        RobaDodajForm rdf = new RobaDodajForm((RobaDTO)dgPregled.Rows[e.RowIndex].Cells["colObject"].Value);
                         rdf.ShowDialog();
                         popuniSveRobe();
                     }
                     else
                     {
-                        izabranaRoba = VeleprodajaUtil.getDAOFactory().getRobaDAO().getBySifra(int.Parse(dgPregled.Rows[e.RowIndex].Cells["colSifra"].Value.ToString()));
+                        izabranaRoba = (RobaDTO)dgPregled.Rows[e.RowIndex].Cells["colObject"].Value;
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
@@ -108,13 +112,31 @@ namespace Veleprodaja
 
         private void objectToRow(RobaDTO roba)
         {
-            dgPregled.Rows.Add(new object[] { roba.SifraRoba, roba.Naziv, roba.JedinicaMjere.OpisJediniceMjere,"Izmjeni" });
+            string izString = "Izmjeni";
+            if (p == null)
+            {
+                izString = "Izmjeni";
+            }
+            else
+            {
+                izString = "Izaberi";
+            }
+
+            dgPregled.Rows.Add(new object[] { roba, roba.SifraRoba, roba.Naziv, roba.JedinicaMjere.OpisJediniceMjere, izString });
         }
 
         private void popuniSveRobe()
         {
             dgPregled.Rows.Clear();
-            List<RobaDTO> lista = VeleprodajaUtil.getDAOFactory().getRobaDAO().getAll();
+            List<RobaDTO> lista ;
+            if (p == null)
+            {
+                lista = VeleprodajaUtil.getDAOFactory().getRobaDAO().getAll();
+            }
+            else
+            {
+                lista = VeleprodajaUtil.getDAOFactory().getRobaDAO().getByNaziv(p);
+            }
             foreach (RobaDTO roba in lista)
             {
                 objectToRow(roba);

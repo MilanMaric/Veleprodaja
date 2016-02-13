@@ -11,6 +11,7 @@ namespace Veleprodaja.data.dao
     {
         List<RobaDTO> getAll();
         RobaDTO getBySifra(int sifra);
+        List<RobaDTO> getByNaziv(String naziv);
         int insert(RobaDTO roba);
         int update(RobaDTO roba,int staraSifra);
     }
