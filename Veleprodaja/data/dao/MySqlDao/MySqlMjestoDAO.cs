@@ -11,7 +11,7 @@ namespace Veleprodaja.data.dao.MySqlDao
     public class MySqlMjestoDAO:MjestoDAO
     {
         private string qGetAll = "select * from mjesto";
-        private string qInsert = "INSERT INTO `veleprodaja`.`mjesto` (`PostanskiBroj`, `naziv`) VALUES (?postanskiBroj, ?naziv);";
+        private string qInsert = "INSERT INTO `veleprodaja`.`mjesto` (`PostanskiBroj`, `NazivMjesto`) VALUES (?postanskiBroj, ?naziv);";
         public List<MjestoDTO> getAll()
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();

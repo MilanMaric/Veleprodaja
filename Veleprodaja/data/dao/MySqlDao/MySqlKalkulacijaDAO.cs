@@ -10,12 +10,14 @@ namespace Veleprodaja.data.dao.MySqlDao
 {
     public class MySqlKalkulacijaDAO : KalkulacijaDAO
     {
-        private string qGetAll = "select * from kalkulacija_osnovno;";
+        private string qGetAll = "select * from kalkulacija_osnovno where PoslovnaGodina=?PoslovnaGodina;";
+        private string qInsert = "INSERT INTO `veleprodaja`.`kalkulacija` (`RedniBroj`, `BrojFaktureDobavljaca`) VALUES (?RedniBroj, ?BrojFaktureDobavljaca);";
         public List<KalkulacijaDTO> getAll()
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = qGetAll;
+            command.Parameters.AddWithValue("PoslovnaGodina", VeleprodajaUtil.PoslovnaGodina);
             MySqlDataReader reader = command.ExecuteReader();
             List<KalkulacijaDTO> lista = new List<KalkulacijaDTO>();
             while (reader.Read())
@@ -32,6 +34,18 @@ namespace Veleprodaja.data.dao.MySqlDao
 
         public int insert(KalkulacijaDTO kalkulacija)
         {
+            int rows=new MySqlStavkaKnjigeTrgovineNaVeliko().insert(kalkulacija);
+            if (rows > 0)
+            {
+                MySqlConnection connection = ConnectionPool.checkOutConnection();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = qInsert;
+                command.Parameters.AddWithValue("RedniBroj", kalkulacija.RedniBroj);
+                command.Parameters.AddWithValue("BrojFaktureDobavljaca", kalkulacija.BrojFaktureDobavljaca);
+                int rows1=command.ExecuteNonQuery();
+                ConnectionPool.checkInConnection(connection);
+                return rows;
+            }
             return 0;
         }
 

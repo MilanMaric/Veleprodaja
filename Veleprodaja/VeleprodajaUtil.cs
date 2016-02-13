@@ -17,6 +17,14 @@ namespace Veleprodaja
             return new MySqlDAOFactory();
         }
 
+        private static int poslovnaGodina = 2016;
+
+        public static int PoslovnaGodina
+        {
+            get { return VeleprodajaUtil.poslovnaGodina; }
+            set { VeleprodajaUtil.poslovnaGodina = value; }
+        }
+
         public static void initJedinicaMjereComboBox(ComboBox cb)
         {
             cb.Items.Clear();

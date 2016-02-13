@@ -13,6 +13,15 @@ namespace Veleprodaja
 {
     public partial class RobaPregledForm : PregledForm
     {
+        private string p=null;
+        private RobaDTO izabranaRoba=null;
+
+        public RobaDTO IzabranaRoba
+        {
+            get { return izabranaRoba; }
+            set { izabranaRoba = value; }
+        }
+
         public RobaPregledForm()
         {
             InitializeComponent();
@@ -21,6 +30,18 @@ namespace Veleprodaja
             popuniSveRobe();
             sifarnikRobeToolStripMenuItem.Enabled = false;
             this.dodavanjeRobeToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeRobeClick);
+        }
+
+        public RobaPregledForm(string p)
+        {
+            this.p = p;
+            InitializeComponent();
+            initRobaKolone();
+            splitContainer1.Panel2Collapsed = true;
+            popuniSveRobe();
+            sifarnikRobeToolStripMenuItem.Enabled = false;
+            this.dodavanjeRobeToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeRobeClick);
+            
         }
 
         private void dodavanjeRobeClick(object sender, EventArgs e)
@@ -47,9 +68,18 @@ namespace Veleprodaja
             col.FillWeight = 80;
             dgPregled.Columns.Add(col);
             col = new DataGridViewButtonColumn();
-            col.Name = "colIzbor";
-            col.HeaderText = "Izmjeni";
-            col.FillWeight = 50;
+            if (p == null)
+            {
+                col.Name = "colIzbor";
+                col.HeaderText = "Izmjeni";
+                col.FillWeight = 50;
+            }
+            else
+            {
+                col.Name = "colIzbor";
+                col.HeaderText = "Izaberi";
+                col.FillWeight = 50;
+            }
             dgPregled.Columns.Add(col);
             dgPregled.CellContentClick += new DataGridViewCellEventHandler(cellClick);
         }
@@ -60,9 +90,18 @@ namespace Veleprodaja
             {
                 if (e.RowIndex >= 0)
                 {
-                    RobaDodajForm rdf = new RobaDodajForm(VeleprodajaUtil.getDAOFactory().getRobaDAO().getBySifra(int.Parse(dgPregled.Rows[e.RowIndex].Cells["colSifra"].Value.ToString())));
-                    rdf.ShowDialog();
-                    popuniSveRobe();
+                    if (p == null)
+                    {
+                        RobaDodajForm rdf = new RobaDodajForm(VeleprodajaUtil.getDAOFactory().getRobaDAO().getBySifra(int.Parse(dgPregled.Rows[e.RowIndex].Cells["colSifra"].Value.ToString())));
+                        rdf.ShowDialog();
+                        popuniSveRobe();
+                    }
+                    else
+                    {
+                        izabranaRoba = VeleprodajaUtil.getDAOFactory().getRobaDAO().getBySifra(int.Parse(dgPregled.Rows[e.RowIndex].Cells["colSifra"].Value.ToString()));
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
             }
         }

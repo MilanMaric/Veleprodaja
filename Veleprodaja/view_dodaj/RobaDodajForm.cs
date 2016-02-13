@@ -29,7 +29,14 @@ namespace Veleprodaja
         private RobaDTO fillObject()
         {
             RobaDTO roba = new RobaDTO();
-            roba.SifraRoba = int.Parse(tbxSifra.Text);
+            if (string.IsNullOrEmpty(tbxSifra.Text))
+            {
+                return null;
+            }
+            else
+            {
+                roba.SifraRoba = int.Parse(tbxSifra.Text);
+            }
             roba.Naziv = tbxNaziv.Text;
             roba.JedinicaMjere =(JedinicaMjereDTO) cbJedinicaMjere.Items[cbJedinicaMjere.SelectedIndex];
             return roba;

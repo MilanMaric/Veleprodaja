@@ -10,6 +10,11 @@ namespace Veleprodaja.data.dto
     {
         private string brojFaktureDobavljaca;
 
+        public KalkulacijaDTO()
+        {
+
+        }
+
         public KalkulacijaDTO(StavkaKnjigeTrgovineNaVelikoDTO stavka)
         {
             this.Datum = stavka.Datum;

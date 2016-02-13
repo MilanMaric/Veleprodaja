@@ -75,6 +75,12 @@
     <Compile Include="DodajForm.Designer.cs">
       <DependentUpon>DodajForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view_dodaj\JedinicaMjereDodajForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view_dodaj\JedinicaMjereDodajForm.Designer.cs">
+      <DependentUpon>JedinicaMjereDodajForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view_dodaj\KalkulacijaDodajForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </Compile>
     <EmbeddedResource Include="DodajForm.resx">
       <DependentUpon>DodajForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view_dodaj\JedinicaMjereDodajForm.resx">
+      <DependentUpon>JedinicaMjereDodajForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view_dodaj\KalkulacijaDodajForm.resx">
       <DependentUpon>KalkulacijaDodajForm.cs</DependentUpon>

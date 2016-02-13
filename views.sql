@@ -8,5 +8,6 @@ SELECT k.RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,p.JIB,p.Naziv,p.Ad
 create view kalkulacija_bezPartnera(RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB) as 
 select k.RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB from kalkulacija k inner join stavka_knjige_trgovine_na_veliko s on k.RedniBroj=s.RedniBroj;
 
+insert into knjiga_trgovine_na_veliko values(2016);
 -- drop view kalkulacija_osnovno;
 -- drop view kalkulacija_bezPartnera;

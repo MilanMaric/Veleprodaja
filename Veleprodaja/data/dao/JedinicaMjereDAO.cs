@@ -10,5 +10,6 @@ namespace Veleprodaja.data.dao
     public interface JedinicaMjereDAO
     {
         List<JedinicaMjereDTO> getAll();
+        int insert(JedinicaMjereDTO jedinicaMjere);
     }
 }

@@ -14,12 +14,32 @@ namespace Veleprodaja.data.dao.MySqlDao
         private string qGetBySifra="select * from roba_sa_jedinicom_mjere where SifraRoba=?sifra;";
         private string qInsert = "INSERT INTO `veleprodaja`.`roba` (`SifraRoba`, `Naziv`, `SifraJediniceMjere`) VALUES (?sifra, ?naziv, ?jm);";
         private string qUpdate = "UPDATE `veleprodaja`.`roba` SET `SifraRoba`=?sifra, `Naziv`=?naziv, `SifraJediniceMjere`=?jm WHERE `SifraRoba`=?staraSifra;";
+        private string qGetByNaziv = "select * from roba_sa_jedinicom_mjere where Naziv like '%?naziv%';";
 
         public List<RobaDTO> getAll()
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = qGetAll;
+            MySqlDataReader reader = command.ExecuteReader();
+            List<RobaDTO> lista = new List<RobaDTO>();
+            while (reader.Read())
+            {
+                RobaDTO roba = readerToRobaDTO(reader);
+                roba.JedinicaMjere = MySqlJedinicaMjereDAO.readerToJedinicaMjereDTO(reader);
+                lista.Add(roba);
+            }
+            reader.Close();
+            ConnectionPool.checkInConnection(connection);
+            return lista;
+        }
+
+        public List<RobaDTO> getByNaziv(String naziv)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qGetByNaziv;
+            command.Parameters.AddWithValue("naziv",naziv);
             MySqlDataReader reader = command.ExecuteReader();
             List<RobaDTO> lista = new List<RobaDTO>();
             while (reader.Read())
@@ -85,5 +105,6 @@ namespace Veleprodaja.data.dao.MySqlDao
             roba.Naziv = reader.GetString("Naziv");
             return roba;
         }
+
     }
 }

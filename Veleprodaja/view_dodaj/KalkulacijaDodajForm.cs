@@ -55,9 +55,24 @@ namespace Veleprodaja.view_dodaj
                 dgPredhodneKalkulacije.Rows.Add(new object[] { kalkulacija.RedniBroj, kalkulacija.Datum, kalkulacija.Partner.Naziv, "Izmjeni" });
             }
         }
+
+        private void fillObject(KalkulacijaDTO kalkulacija)
+        {
+            kalkulacija.PoslovnaGodina = VeleprodajaUtil.PoslovnaGodina;
+            kalkulacija.BrojFaktureDobavljaca = tbxBrojFaktureDobavljaca.Text;
+            kalkulacija.Partner = (PartnerDTO)cbDobavljac.Items[cbDobavljac.SelectedIndex];
+            kalkulacija.Datum = dtpDatumKalkulacije.Value;
+        }
+
+        private void insertKalkulacija()
+        {
+            KalkulacijaDTO kalkulacija = new KalkulacijaDTO();
+            fillObject(kalkulacija);
+            VeleprodajaUtil.getDAOFactory().getKalkulacijaDAO().insert(kalkulacija);
+        }
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            insertKalkulacija();
             StavkaKalkulacijeDodajForm sk = new StavkaKalkulacijeDodajForm();
             this.Hide();
             sk.ShowDialog();

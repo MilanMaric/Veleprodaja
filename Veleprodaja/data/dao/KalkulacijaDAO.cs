@@ -10,5 +10,7 @@ namespace Veleprodaja.data.dao
     public interface KalkulacijaDAO
     {
         List<KalkulacijaDTO> getAll();
+
+        int insert(KalkulacijaDTO kalkulacija);
     }
 }

@@ -5,16 +5,11 @@ use veleprodaja;
 
 CREATE TABLE BANKA
 (
-	IdBanka               INTEGER NOT NULL,
+	IdBanka               INTEGER NOT NULL auto_increment,
 	Naziv                 CHAR(64) NOT NULL,
-	PostanskiBroj         INTEGER NOT NULL
+	PostanskiBroj         INTEGER NOT NULL,
+	 PRIMARY KEY (IdBanka)
 )
-;
-
-
-
-ALTER TABLE BANKA
-	ADD  PRIMARY KEY (IdBanka)
 ;
 
 
@@ -22,14 +17,9 @@ ALTER TABLE BANKA
 CREATE TABLE JEDINICA_MJERE
 (
 	SifraJediniceMjere    CHAR(64) NOT NULL,
-	OpisJediniceMjere     CHAR(64) NOT NULL
+	OpisJediniceMjere     CHAR(64) NOT NULL,
+	 PRIMARY KEY (SifraJediniceMjere)
 )
-;
-
-
-
-ALTER TABLE JEDINICA_MJERE
-	ADD  PRIMARY KEY (SifraJediniceMjere)
 ;
 
 
@@ -37,28 +27,18 @@ ALTER TABLE JEDINICA_MJERE
 CREATE TABLE KALKULACIJA
 (
 	RedniBroj             INTEGER NOT NULL,
-	BrojFaktureDobavljaca  CHAR(64) NOT NULL
+	BrojFaktureDobavljaca  CHAR(64) NOT NULL,
+	 PRIMARY KEY (RedniBroj)
 )
-;
-
-
-
-ALTER TABLE KALKULACIJA
-	ADD  PRIMARY KEY (RedniBroj)
 ;
 
 
 
 CREATE TABLE KNJIGA_TRGOVINE_NA_VELIKO
 (
-	PoslovnaGodina        INTEGER NOT NULL
+	PoslovnaGodina        INTEGER NOT NULL,
+	 PRIMARY KEY (PoslovnaGodina)
 )
-;
-
-
-
-ALTER TABLE KNJIGA_TRGOVINE_NA_VELIKO
-	ADD  PRIMARY KEY (PoslovnaGodina)
 ;
 
 
@@ -66,28 +46,18 @@ ALTER TABLE KNJIGA_TRGOVINE_NA_VELIKO
 CREATE TABLE MJESTO
 (
 	PostanskiBroj         INTEGER NOT NULL,
-	NazivMjesto           CHAR(64) NOT NULL
+	NazivMjesto           CHAR(64) NOT NULL,
+	 PRIMARY KEY (PostanskiBroj)
 )
-;
-
-
-
-ALTER TABLE MJESTO
-	ADD  PRIMARY KEY (PostanskiBroj)
 ;
 
 
 
 CREATE TABLE NIVELACIJA
 (
-	RedniBroj             INTEGER NOT NULL
+	RedniBroj             INTEGER NOT NULL ,
+	 PRIMARY KEY (RedniBroj)
 )
-;
-
-
-
-ALTER TABLE NIVELACIJA
-	ADD  PRIMARY KEY (RedniBroj)
 ;
 
 
@@ -95,14 +65,9 @@ ALTER TABLE NIVELACIJA
 CREATE TABLE OTPREMNICA
 (
 	RedniBroj             INTEGER NOT NULL,
-	RedniBrojRacuna       INTEGER NULL
+	RedniBrojRacuna       INTEGER NULL,
+	 PRIMARY KEY (RedniBroj)
 )
-;
-
-
-
-ALTER TABLE OTPREMNICA
-	ADD  PRIMARY KEY (RedniBroj)
 ;
 
 
@@ -112,14 +77,9 @@ CREATE TABLE PARTNER
 	JIB                   INTEGER NOT NULL,
 	Naziv                 CHAR(64) NOT NULL,
 	Adresa                CHAR(64) NOT NULL,
-	PostanskiBroj         INTEGER NOT NULL
+	PostanskiBroj         INTEGER NOT NULL,
+	 PRIMARY KEY (JIB)
 )
-;
-
-
-
-ALTER TABLE PARTNER
-	ADD  PRIMARY KEY (JIB)
 ;
 
 
@@ -127,67 +87,47 @@ ALTER TABLE PARTNER
 CREATE TABLE RACUN
 (
 	RedniBrojRacuna       INTEGER NOT NULL,
-	Datum                 DATE NULL
+	Datum                 DATE NULL,
+	 PRIMARY KEY (RedniBrojRacuna)
 )
-;
-
-
-
-ALTER TABLE RACUN
-	ADD  PRIMARY KEY (RedniBrojRacuna)
 ;
 
 
 
 CREATE TABLE ROBA
 (
-	SifraRoba             INTEGER NOT NULL,
+	SifraRoba             INTEGER NOT NULL auto_increment,
 	Naziv                 CHAR(64) NOT NULL,
-	SifraJediniceMjere    CHAR(64) NOT NULL
+	SifraJediniceMjere    CHAR(64) NOT NULL,
+	 PRIMARY KEY (SifraRoba)
 )
-;
-
-
-
-ALTER TABLE ROBA
-	ADD  PRIMARY KEY (SifraRoba)
 ;
 
 
 
 CREATE TABLE STAVKA_KALKULACIJE
 (
-	RedniBroj             INTEGER NOT NULL,
+	RedniBroj             INTEGER NOT NULL auto_increment,
 	SifraRoba             INTEGER NULL,
 	RedniBrojStavke       INTEGER NOT NULL,
 	Kolicina              INTEGER NOT NULL,
 	NabavnaCijena         FLOAT NOT NULL,
 	Rabat                 FLOAT NOT NULL,
-	VeleprodajnaCijena    FLOAT NOT NULL
+	VeleprodajnaCijena    FLOAT NOT NULL,
+	 PRIMARY KEY (RedniBroj,RedniBrojStavke)
 )
-;
-
-
-
-ALTER TABLE STAVKA_KALKULACIJE
-	ADD  PRIMARY KEY (RedniBroj,RedniBrojStavke)
 ;
 
 
 
 CREATE TABLE STAVKA_KNJIGE_TRGOVINE_NA_VELIKO
 (
-	RedniBroj             INTEGER NOT NULL,
+	RedniBroj             INTEGER NOT NULL auto_increment,
 	PoslovnaGodina        INTEGER NOT NULL,
 	JIB                   INTEGER NULL,
-	Datum                 DATE NULL
+	Datum                 DATE NULL,
+	 PRIMARY KEY (RedniBroj)
 )
-;
-
-
-
-ALTER TABLE STAVKA_KNJIGE_TRGOVINE_NA_VELIKO
-	ADD  PRIMARY KEY (RedniBroj)
 ;
 
 
@@ -199,14 +139,9 @@ CREATE TABLE STAVKA_NIVELACIJE
 	RedniBrojStavke       INTEGER NOT NULL,
 	Kolicina              INTEGER NOT NULL,
 	StaraCijena           FLOAT NOT NULL,
-	NovaCijena            FLOAT NOT NULL
+	NovaCijena            FLOAT NOT NULL,
+	 PRIMARY KEY (RedniBroj,RedniBrojStavke)
 )
-;
-
-
-
-ALTER TABLE STAVKA_NIVELACIJE
-	ADD  PRIMARY KEY (RedniBroj,RedniBrojStavke)
 ;
 
 
@@ -218,14 +153,9 @@ CREATE TABLE STAVKA_OTPREMNICE
 	RedniBroj             INTEGER NOT NULL,
 	Kolicina              FLOAT NOT NULL,
 	VeleprodajnaCijena    FLOAT NOT NULL,
-	Rabat                 FLOAT NULL
+	Rabat                 FLOAT NULL,
+	 PRIMARY KEY (RedniBrojStavka,RedniBroj)
 )
-;
-
-
-
-ALTER TABLE STAVKA_OTPREMNICE
-	ADD  PRIMARY KEY (RedniBrojStavka,RedniBroj)
 ;
 
 
@@ -233,14 +163,9 @@ ALTER TABLE STAVKA_OTPREMNICE
 CREATE TABLE TELEFON_BANKE
 (
 	BrojTelefona          INTEGER NOT NULL,
-	IdBanka               INTEGER NOT NULL
+	IdBanka               INTEGER NOT NULL,
+	 PRIMARY KEY (BrojTelefona,IdBanka)
 )
-;
-
-
-
-ALTER TABLE TELEFON_BANKE
-	ADD  PRIMARY KEY (BrojTelefona,IdBanka)
 ;
 
 
@@ -248,14 +173,9 @@ ALTER TABLE TELEFON_BANKE
 CREATE TABLE TELEFON_PARTNERA
 (
 	BrojTelefona          CHAR(64) NOT NULL,
-	JIB                   INTEGER NOT NULL
+	JIB                   INTEGER NOT NULL,
+	 PRIMARY KEY (BrojTelefona,JIB)
 )
-;
-
-
-
-ALTER TABLE TELEFON_PARTNERA
-	ADD  PRIMARY KEY (BrojTelefona,JIB)
 ;
 
 
@@ -264,20 +184,15 @@ CREATE TABLE ZIRO_RACUN
 (
 	IdBanka               INTEGER NOT NULL,
 	BrojZiroRacuna        CHAR(64) NOT NULL,
-	JIB                   INTEGER NOT NULL
+	JIB                   INTEGER NOT NULL,
+	 PRIMARY KEY (BrojZiroRacuna,JIB,IdBanka)
 )
 ;
 
 
 
-ALTER TABLE ZIRO_RACUN
-	ADD  PRIMARY KEY (BrojZiroRacuna,JIB,IdBanka)
-;
-
-
-
 ALTER TABLE BANKA
-	ADD FOREIGN KEY R_34 (PostanskiBroj) REFERENCES MJESTO(PostanskiBroj)
+	ADD FOREIGN KEY BANKA_MJESTO (PostanskiBroj) REFERENCES MJESTO(PostanskiBroj)
 ;
 
 
@@ -303,36 +218,36 @@ ALTER TABLE OTPREMNICA
 
 
 ALTER TABLE OTPREMNICA
-	ADD FOREIGN KEY R_61 (RedniBrojRacuna) REFERENCES RACUN(RedniBrojRacuna)
+	ADD FOREIGN KEY OTPREMNICA_RACUN (RedniBrojRacuna) REFERENCES RACUN(RedniBrojRacuna)
 ;
 
 
 
 ALTER TABLE PARTNER
-	ADD FOREIGN KEY R_43 (PostanskiBroj) REFERENCES MJESTO(PostanskiBroj)
+	ADD FOREIGN KEY PARTNER_SJEDISTE (PostanskiBroj) REFERENCES MJESTO(PostanskiBroj)
 ;
 
 
 
 ALTER TABLE ROBA
-	ADD FOREIGN KEY R_62 (SifraJediniceMjere) REFERENCES JEDINICA_MJERE(SifraJediniceMjere)
+	ADD FOREIGN KEY ROBA_JEDINICA_MJERE (SifraJediniceMjere) REFERENCES JEDINICA_MJERE(SifraJediniceMjere)
 ;
 
 
 
 ALTER TABLE STAVKA_KALKULACIJE
-	ADD FOREIGN KEY R_46 (RedniBroj) REFERENCES KALKULACIJA(RedniBroj)
+	ADD FOREIGN KEY KALKULACIJA_STAVKE_KALKULACIJE (RedniBroj) REFERENCES KALKULACIJA(RedniBroj)
 ;
 
 
 ALTER TABLE STAVKA_KALKULACIJE
-	ADD FOREIGN KEY R_47 (SifraRoba) REFERENCES ROBA(SifraRoba)
+	ADD FOREIGN KEY STAVKA_KALKULACIJE_ROBA (SifraRoba) REFERENCES ROBA(SifraRoba)
 ;
 
 
 
 ALTER TABLE STAVKA_KNJIGE_TRGOVINE_NA_VELIKO
-	ADD FOREIGN KEY R_29 (PoslovnaGodina) REFERENCES KNJIGA_TRGOVINE_NA_VELIKO(PoslovnaGodina)
+	ADD FOREIGN KEY KNJIGA_STAVKA_KNJIGE (PoslovnaGodina) REFERENCES KNJIGA_TRGOVINE_NA_VELIKO(PoslovnaGodina)
 ;
 
 
@@ -343,18 +258,18 @@ ALTER TABLE STAVKA_KNJIGE_TRGOVINE_NA_VELIKO
 
 
 ALTER TABLE STAVKA_NIVELACIJE
-	ADD FOREIGN KEY R_65 (RedniBroj) REFERENCES NIVELACIJA(RedniBroj)
+	ADD FOREIGN KEY NIVELACIJA_STAVKE_NIVELACIJE (RedniBroj) REFERENCES NIVELACIJA(RedniBroj)
 ;
 
 
 ALTER TABLE STAVKA_NIVELACIJE
-	ADD FOREIGN KEY R_66 (SifraRoba) REFERENCES ROBA(SifraRoba)
+	ADD FOREIGN KEY ROBA_STAVKA_NIVELACIJE (SifraRoba) REFERENCES ROBA(SifraRoba)
 ;
 
 
 
 ALTER TABLE STAVKA_OTPREMNICE
-	ADD FOREIGN KEY R_33 (SifraRoba) REFERENCES ROBA(SifraRoba)
+	ADD FOREIGN KEY STAVKA_OTPREMNICE_ROBA (SifraRoba) REFERENCES ROBA(SifraRoba)
 ;
 
 
@@ -365,7 +280,7 @@ ALTER TABLE STAVKA_OTPREMNICE
 
 
 ALTER TABLE TELEFON_BANKE
-	ADD FOREIGN KEY R_44 (IdBanka) REFERENCES BANKA(IdBanka)
+	ADD FOREIGN KEY BANKA_TELEFON_BANKE (IdBanka) REFERENCES BANKA(IdBanka)
 ;
 
 
@@ -377,12 +292,12 @@ ALTER TABLE TELEFON_PARTNERA
 
 
 ALTER TABLE ZIRO_RACUN
-	ADD FOREIGN KEY R_36 (IdBanka) REFERENCES BANKA(IdBanka)
+	ADD FOREIGN KEY ZIRO_RACUN_BANKA (IdBanka) REFERENCES BANKA(IdBanka)
 ;
 
 
 ALTER TABLE ZIRO_RACUN
-	ADD FOREIGN KEY R_38 (JIB) REFERENCES PARTNER(JIB)
+	ADD FOREIGN KEY PARTNER_ZIRO_RACUN (JIB) REFERENCES PARTNER(JIB)
 ;
 
 

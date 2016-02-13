@@ -78,5 +78,12 @@ namespace Veleprodaja
             KalkulacijaDodajForm kdf = new KalkulacijaDodajForm();
             kdf.ShowDialog();
         }
+
+        private void dodavanjeJediniceMjereToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            otvorenaFormaZaDodavanje = new JedinicaMjereDodajForm();
+            otvorenaFormaZaDodavanje.ShowDialog();
+            otvorenaFormaZaDodavanje = null;
+        }
     }
 }

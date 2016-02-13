@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxSifraRobe = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblRobaNaziv = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.gbIzabranaRoba = new System.Windows.Forms.GroupBox();
             this.lblRobaJedinicaMjere = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblRobaNaziv = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -48,7 +48,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.gbIzabranaRoba.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSacuvaj
@@ -59,62 +59,45 @@
             // 
             this.btnOdustani.Location = new System.Drawing.Point(163, 433);
             // 
-            // textBox1
+            // tbxSifraRobe
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbxSifraRobe.Location = new System.Drawing.Point(107, 31);
+            this.tbxSifraRobe.Name = "tbxSifraRobe";
+            this.tbxSifraRobe.Size = new System.Drawing.Size(200, 20);
+            this.tbxSifraRobe.TabIndex = 2;
+            this.tbxSifraRobe.Leave += new System.EventHandler(this.tbxSifraRobe_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Sifra robe";
+            this.label1.Text = "Naziv robe";
             // 
-            // groupBox1
+            // gbIzabranaRoba
             // 
-            this.groupBox1.Controls.Add(this.lblRobaJedinicaMjere);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.lblRobaNaziv);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(16, 76);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(291, 104);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Izabrana roba";
+            this.gbIzabranaRoba.Controls.Add(this.lblRobaJedinicaMjere);
+            this.gbIzabranaRoba.Controls.Add(this.button1);
+            this.gbIzabranaRoba.Controls.Add(this.lblRobaNaziv);
+            this.gbIzabranaRoba.Controls.Add(this.label4);
+            this.gbIzabranaRoba.Controls.Add(this.label3);
+            this.gbIzabranaRoba.Location = new System.Drawing.Point(16, 76);
+            this.gbIzabranaRoba.Name = "gbIzabranaRoba";
+            this.gbIzabranaRoba.Size = new System.Drawing.Size(291, 104);
+            this.gbIzabranaRoba.TabIndex = 4;
+            this.gbIzabranaRoba.TabStop = false;
+            this.gbIzabranaRoba.Text = "Izabrana roba";
             // 
-            // label3
+            // lblRobaJedinicaMjere
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Naziv:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Jedinica mjere:";
-            // 
-            // lblRobaNaziv
-            // 
-            this.lblRobaNaziv.AutoSize = true;
-            this.lblRobaNaziv.Location = new System.Drawing.Point(62, 28);
-            this.lblRobaNaziv.Name = "lblRobaNaziv";
-            this.lblRobaNaziv.Size = new System.Drawing.Size(35, 13);
-            this.lblRobaNaziv.TabIndex = 3;
-            this.lblRobaNaziv.Text = "label5";
+            this.lblRobaJedinicaMjere.AutoSize = true;
+            this.lblRobaJedinicaMjere.Location = new System.Drawing.Point(88, 56);
+            this.lblRobaJedinicaMjere.Name = "lblRobaJedinicaMjere";
+            this.lblRobaJedinicaMjere.Size = new System.Drawing.Size(35, 13);
+            this.lblRobaJedinicaMjere.TabIndex = 6;
+            this.lblRobaJedinicaMjere.Text = "label5";
             // 
             // button1
             // 
@@ -125,14 +108,32 @@
             this.button1.Text = "Izmjeni robu";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // lblRobaJedinicaMjere
+            // lblRobaNaziv
             // 
-            this.lblRobaJedinicaMjere.AutoSize = true;
-            this.lblRobaJedinicaMjere.Location = new System.Drawing.Point(88, 56);
-            this.lblRobaJedinicaMjere.Name = "lblRobaJedinicaMjere";
-            this.lblRobaJedinicaMjere.Size = new System.Drawing.Size(35, 13);
-            this.lblRobaJedinicaMjere.TabIndex = 6;
-            this.lblRobaJedinicaMjere.Text = "label5";
+            this.lblRobaNaziv.AutoSize = true;
+            this.lblRobaNaziv.Location = new System.Drawing.Point(49, 28);
+            this.lblRobaNaziv.Name = "lblRobaNaziv";
+            this.lblRobaNaziv.Size = new System.Drawing.Size(35, 13);
+            this.lblRobaNaziv.TabIndex = 3;
+            this.lblRobaNaziv.Text = "label5";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Jedinica mjere:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Naziv:";
             // 
             // textBox2
             // 
@@ -251,16 +252,16 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbIzabranaRoba);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxSifraRobe);
             this.Name = "StavkaKalkulacijeDodajForm";
             this.Text = "StavkaKalkulacijeDodajForm";
             this.Controls.SetChildIndex(this.btnSacuvaj, 0);
             this.Controls.SetChildIndex(this.btnOdustani, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.tbxSifraRobe, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.gbIzabranaRoba, 0);
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.textBox3, 0);
             this.Controls.SetChildIndex(this.textBox4, 0);
@@ -273,8 +274,8 @@
             this.Controls.SetChildIndex(this.textBox5, 0);
             this.Controls.SetChildIndex(this.label10, 0);
             this.Controls.SetChildIndex(this.label11, 0);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbIzabranaRoba.ResumeLayout(false);
+            this.gbIzabranaRoba.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,9 +283,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxSifraRobe;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbIzabranaRoba;
         private System.Windows.Forms.Label lblRobaJedinicaMjere;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblRobaNaziv;

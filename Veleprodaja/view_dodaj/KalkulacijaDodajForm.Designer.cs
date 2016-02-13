@@ -29,69 +29,53 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxBrojFaktureDobavljaca = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.cbDobavljac = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.dgPredhodneKalkulacije = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.dtpDatumKalkulacije = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 74);
+            this.label1.Location = new System.Drawing.Point(12, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Dobavljac";
             // 
-            // textBox2
+            // tbxBrojFaktureDobavljaca
             // 
-            this.textBox2.Location = new System.Drawing.Point(140, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(390, 20);
-            this.textBox2.TabIndex = 3;
+            this.tbxBrojFaktureDobavljaca.Location = new System.Drawing.Point(140, 97);
+            this.tbxBrojFaktureDobavljaca.Name = "tbxBrojFaktureDobavljaca";
+            this.tbxBrojFaktureDobavljaca.Size = new System.Drawing.Size(390, 20);
+            this.tbxBrojFaktureDobavljaca.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 119);
+            this.label2.Location = new System.Drawing.Point(9, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Broj fakture dobavljaca";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(140, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(390, 20);
-            this.textBox3.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Redni broj";
-            // 
             // cbDobavljac
             // 
             this.cbDobavljac.FormattingEnabled = true;
-            this.cbDobavljac.Location = new System.Drawing.Point(140, 74);
+            this.cbDobavljac.Location = new System.Drawing.Point(140, 54);
             this.cbDobavljac.Name = "cbDobavljac";
             this.cbDobavljac.Size = new System.Drawing.Size(390, 21);
             this.cbDobavljac.TabIndex = 10;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(379, 155);
+            this.button2.Location = new System.Drawing.Point(379, 177);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(151, 23);
             this.button2.TabIndex = 11;
@@ -129,31 +113,48 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Predhodne kalkulacije:";
             // 
+            // dtpDatumKalkulacije
+            // 
+            this.dtpDatumKalkulacije.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatumKalkulacije.Location = new System.Drawing.Point(140, 129);
+            this.dtpDatumKalkulacije.Name = "dtpDatumKalkulacije";
+            this.dtpDatumKalkulacije.Size = new System.Drawing.Size(390, 20);
+            this.dtpDatumKalkulacije.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Datum kalkulacije";
+            // 
             // KalkulacijaDodajForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 515);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtpDatumKalkulacije);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgPredhodneKalkulacije);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cbDobavljac);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbxBrojFaktureDobavljaca);
             this.Controls.Add(this.label1);
             this.Name = "KalkulacijaDodajForm";
             this.Text = "KalkulacijaDodajForm";
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.tbxBrojFaktureDobavljaca, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.cbDobavljac, 0);
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.dgPredhodneKalkulacije, 0);
             this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.dtpDatumKalkulacije, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,13 +164,13 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxBrojFaktureDobavljaca;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbDobavljac;
         private System.Windows.Forms.Button button2;
         protected System.Windows.Forms.DataGridView dgPredhodneKalkulacije;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtpDatumKalkulacije;
+        private System.Windows.Forms.Label label3;
     }
 }
