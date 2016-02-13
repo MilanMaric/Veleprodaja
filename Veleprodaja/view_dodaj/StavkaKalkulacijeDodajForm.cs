@@ -17,11 +17,7 @@ namespace Veleprodaja.view_dodaj
         private RobaDTO izabranaRoba = null;
         private StavkaKalkulacijeDTO stavka = null;
 
-        public StavkaKalkulacijeDodajForm()
-        {
-            InitializeComponent();
-            fillStavke();
-        }
+        
 
         public StavkaKalkulacijeDodajForm(KalkulacijaDTO kalkulacija)
         {
@@ -35,6 +31,7 @@ namespace Veleprodaja.view_dodaj
 
         private void fillStavke()
         {
+            dgStavke.Rows.Clear();
             List<StavkaKalkulacijeDTO> listaStavki = VeleprodajaUtil.getDAOFactory().getStavkaKalkulacijeDAO().getByKalkulacija(kalkulacija);
             foreach (StavkaKalkulacijeDTO stavka in listaStavki)
             {
@@ -85,6 +82,18 @@ namespace Veleprodaja.view_dodaj
             stavka.Roba = izabranaRoba;
         }
 
+        private void emptyControlls()
+        {
+            tbxKolicina.Text = "";
+            tbxNabavnaCijena.Text = "";
+            tbxRabat.Text = "";
+            tbxKolicina.Text = "";
+            tbxSifraRobe.Text = "";
+            tbxVeleprodajnaCijena.Text = "";
+            izabranaRoba = null;
+            gbIzabranaRoba.Hide();
+        }
+
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             if (izabranaRoba != null && kalkulacija!=null)
@@ -94,6 +103,8 @@ namespace Veleprodaja.view_dodaj
                     stavka = new StavkaKalkulacijeDTO();
                     fillObject(stavka);
                     VeleprodajaUtil.getDAOFactory().getStavkaKalkulacijeDAO().insert(stavka);
+                    fillStavke();
+                    emptyControlls();
                 }
             }
         }

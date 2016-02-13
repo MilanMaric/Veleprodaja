@@ -10,7 +10,7 @@ namespace Veleprodaja.data.dao.MySqlDao
 {
     public class MySqlStavkaKalkulacijeDAO:StavkaKalkulacijeDAO
     {
-        private string qGetByKalkulacija = "select * from stavka_kalkulacija_view1 where RedniBroj=?RedniBroj;";
+        private string qGetByKalkulacija = "select * from stavka_kalkulacija_view_detaljno where RedniBroj=?RedniBroj;";
         private string qInsert = "INSERT INTO `veleprodaja`.`stavka_kalkulacije` (`RedniBroj`, `SifraRoba`, `Kolicina`, `NabavnaCijena`, `Rabat`, `VeleprodajnaCijena`) VALUES (?RedniBroj,?SifraRoba , ?Kolicina, ?NabavnaCijena, ?Rabat, ?VeleprodajnaCijena);";
 
         public List<StavkaKalkulacijeDTO> getByKalkulacija(KalkulacijaDTO kalkulacija)
@@ -46,7 +46,6 @@ namespace Veleprodaja.data.dao.MySqlDao
             command.Parameters.AddWithValue("Rabat", stavka.Rabat);
             command.Parameters.AddWithValue("VeleprodajnaCijena", stavka.VeleprodajnaCijena);
             int rows=command.ExecuteNonQuery();
-            stavka.RedniBroj = (int)command.LastInsertedId;
             ConnectionPool.checkInConnection(connection);
             return rows;
         }

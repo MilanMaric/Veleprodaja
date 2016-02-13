@@ -15,13 +15,6 @@ namespace Veleprodaja.data.dto
             get { return kalkulacija; }
             set { kalkulacija = value; }
         }
-        private int redniBroj;
-
-        public int RedniBroj
-        {
-            get { return redniBroj; }
-            set { redniBroj = value; }
-        }
         private RobaDTO roba;
 
         public RobaDTO Roba

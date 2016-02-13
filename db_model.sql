@@ -5,7 +5,7 @@ use veleprodaja;
 
 CREATE TABLE BANKA
 (
-	IdBanka               INTEGER NOT NULL auto_increment,
+	IdBanka               INTEGER NOT NULL,
 	Naziv                 CHAR(64) NOT NULL,
 	PostanskiBroj         INTEGER NOT NULL,
 	 PRIMARY KEY (IdBanka)
@@ -55,7 +55,7 @@ CREATE TABLE MJESTO
 
 CREATE TABLE NIVELACIJA
 (
-	RedniBroj             INTEGER NOT NULL ,
+	RedniBroj             INTEGER NOT NULL,
 	 PRIMARY KEY (RedniBroj)
 )
 ;
@@ -86,9 +86,8 @@ CREATE TABLE PARTNER
 
 CREATE TABLE RACUN
 (
-	RedniBrojRacuna       INTEGER NOT NULL,
-	Datum                 DATE NULL
-    check (Datum>=date'1990-01-01' and Datum<=current_date),
+	RedniBrojRacuna       INTEGER NOT NULL auto_increment,
+	Datum                 DATE NULL,
 	 PRIMARY KEY (RedniBrojRacuna)
 )
 ;
@@ -108,14 +107,13 @@ CREATE TABLE ROBA
 
 CREATE TABLE STAVKA_KALKULACIJE
 (
-	RedniBroj             INTEGER NOT NULL ,
-	SifraRoba             INTEGER NULL,
-	RedniBrojStavke       INTEGER NOT NULL auto_increment,
+	RedniBroj             INTEGER NOT NULL,
+	SifraRoba             INTEGER NOT NULL,
 	Kolicina              INTEGER NOT NULL,
 	NabavnaCijena         FLOAT NOT NULL,
 	Rabat                 FLOAT NOT NULL,
 	VeleprodajnaCijena    FLOAT NOT NULL,
-	 PRIMARY KEY (RedniBrojStavke,RedniBroj)
+	 PRIMARY KEY (RedniBroj,SifraRoba)
 )
 ;
 
@@ -136,12 +134,11 @@ CREATE TABLE STAVKA_KNJIGE_TRGOVINE_NA_VELIKO
 CREATE TABLE STAVKA_NIVELACIJE
 (
 	RedniBroj             INTEGER NOT NULL,
-	SifraRoba             INTEGER NULL,
-	RedniBrojStavke       INTEGER NOT NULL,
+	SifraRoba             INTEGER NOT NULL,
 	Kolicina              INTEGER NOT NULL,
 	StaraCijena           FLOAT NOT NULL,
 	NovaCijena            FLOAT NOT NULL,
-	 PRIMARY KEY (RedniBroj,RedniBrojStavke)
+	 PRIMARY KEY (RedniBroj,SifraRoba)
 )
 ;
 
@@ -149,13 +146,12 @@ CREATE TABLE STAVKA_NIVELACIJE
 
 CREATE TABLE STAVKA_OTPREMNICE
 (
-	RedniBrojStavka       INTEGER NOT NULL,
-	SifraRoba             INTEGER NULL,
+	SifraRoba             INTEGER NOT NULL,
 	RedniBroj             INTEGER NOT NULL,
 	Kolicina              FLOAT NOT NULL,
 	VeleprodajnaCijena    FLOAT NOT NULL,
 	Rabat                 FLOAT NULL,
-	 PRIMARY KEY (RedniBrojStavka,RedniBroj)
+	 PRIMARY KEY (RedniBroj,SifraRoba)
 )
 ;
 
@@ -302,4 +298,3 @@ ALTER TABLE ZIRO_RACUN
 ;
 
 
-insert into knjiga_trgovine_na_veliko values(2016);
