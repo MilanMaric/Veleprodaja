@@ -25,6 +25,10 @@ namespace Veleprodaja.view_dodaj
         private void initKalkulacijaColumns()
         {
             DataGridViewColumn col = new DataGridViewTextBoxColumn();
+            col.Name = "colObjekat";
+            col.Visible = false;
+            dgPredhodneKalkulacije.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
             col.Name = "colRedniBroj";
             col.HeaderText = "Redni broj";
             col.ToolTipText = "Redni broj kalkulacije";
@@ -45,6 +49,22 @@ namespace Veleprodaja.view_dodaj
             col.HeaderText = "Izmjeni";
             col.FillWeight = 50;
             dgPredhodneKalkulacije.Columns.Add(col);
+            dgPredhodneKalkulacije.CellContentClick += new DataGridViewCellEventHandler(dgPredhodneKalkulacijeCellContentClick);
+        }
+
+        private void dgPredhodneKalkulacijeCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    KalkulacijaDTO kalkulacija = (KalkulacijaDTO)dgPredhodneKalkulacije.Rows[e.RowIndex].Cells["colObjekat"].Value;
+                    StavkaKalkulacijeDodajForm skdf = new StavkaKalkulacijeDodajForm(kalkulacija);
+                    this.Hide();
+                    skdf.ShowDialog();
+                    this.Show();
+                }
+            }
         }
 
         private void popuniPredhodneKalkulacije()
@@ -52,7 +72,7 @@ namespace Veleprodaja.view_dodaj
             listaPredhodnihKalkulacija = VeleprodajaUtil.getDAOFactory().getKalkulacijaDAO().getAll();
             foreach (KalkulacijaDTO kalkulacija in listaPredhodnihKalkulacija)
             {
-                dgPredhodneKalkulacije.Rows.Add(new object[] { kalkulacija.RedniBroj, kalkulacija.Datum, kalkulacija.Partner.Naziv, "Izmjeni" });
+                dgPredhodneKalkulacije.Rows.Add(new object[] { kalkulacija, kalkulacija.RedniBroj, kalkulacija.Datum, kalkulacija.Partner.Naziv, "Izmjeni" });
             }
         }
 
@@ -64,16 +84,16 @@ namespace Veleprodaja.view_dodaj
             kalkulacija.Datum = dtpDatumKalkulacije.Value;
         }
 
-        private void insertKalkulacija()
+        private KalkulacijaDTO insertKalkulacija()
         {
             KalkulacijaDTO kalkulacija = new KalkulacijaDTO();
             fillObject(kalkulacija);
             VeleprodajaUtil.getDAOFactory().getKalkulacijaDAO().insert(kalkulacija);
+            return kalkulacija;
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            insertKalkulacija();
-            StavkaKalkulacijeDodajForm sk = new StavkaKalkulacijeDodajForm();
+            StavkaKalkulacijeDodajForm sk = new StavkaKalkulacijeDodajForm(insertKalkulacija());
             this.Hide();
             sk.ShowDialog();
             this.Show();

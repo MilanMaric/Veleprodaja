@@ -87,7 +87,8 @@ CREATE TABLE PARTNER
 CREATE TABLE RACUN
 (
 	RedniBrojRacuna       INTEGER NOT NULL,
-	Datum                 DATE NULL,
+	Datum                 DATE NULL
+    check (Datum>=date'01/01/1990' and Datum<=current_date),
 	 PRIMARY KEY (RedniBrojRacuna)
 )
 ;

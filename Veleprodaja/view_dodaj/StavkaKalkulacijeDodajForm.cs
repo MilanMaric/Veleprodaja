@@ -22,7 +22,24 @@ namespace Veleprodaja.view_dodaj
 
         public StavkaKalkulacijeDodajForm(KalkulacijaDTO kalkulacija)
         {
+            InitializeComponent();
             this.kalkulacija = kalkulacija;
+            gbIzabranaRoba.Hide();
+            fillKalkulacijaData();
+        }
+
+        private void fillKalkulacijaData()
+        {
+            lblDatumKalkulacije.Text = kalkulacija.Datum.ToShortDateString();
+            lblDobavljacKalkulacije.Text = kalkulacija.Partner.ToString();
+            lblRedniBrojKalkulacije.Text = kalkulacija.RedniBroj.ToString();
+        }
+
+        private void fillIzabranaRobaData()
+        {
+            gbIzabranaRoba.Show();
+            lblRobaNaziv.Text = izabranaRoba.Naziv;
+            lblRobaJedinicaMjere.Text = izabranaRoba.JedinicaMjere.ToString();
         }
 
         private void tbxSifraRobe_Leave(object sender, EventArgs e)
@@ -30,7 +47,8 @@ namespace Veleprodaja.view_dodaj
             RobaPregledForm rpf = new RobaPregledForm(tbxSifraRobe.Text);
             if(rpf.ShowDialog()==DialogResult.OK)
             {
-
+                izabranaRoba = rpf.IzabranaRoba;
+                fillIzabranaRobaData();
             }
 
         }
