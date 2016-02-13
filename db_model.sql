@@ -1,5 +1,5 @@
 drop schema if exists veleprodaja;
-create schema veleprodaja;
+create schema veleprodaja collate utf8_unicode_ci;
 use veleprodaja;
 
 
