@@ -36,6 +36,9 @@ namespace Veleprodaja.data.dto
             get { return mjesto; }
             set { mjesto = value; }
         }
-
+        public override string ToString()
+        {
+            return jib + " " + naziv + " " + mjesto.Naziv;
+        }
     }
 }

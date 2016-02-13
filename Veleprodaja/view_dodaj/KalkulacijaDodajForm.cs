@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Veleprodaja.data.dto;
 
 namespace Veleprodaja.view_dodaj
 {
     public partial class KalkulacijaDodajForm : WelcomeForm
     {
+        private List<KalkulacijaDTO> listaPredhodnihKalkulacija;
         public KalkulacijaDodajForm()
         {
             InitializeComponent();
             initKalkulacijaColumns();
+            popuniPredhodneKalkulacije();
+            VeleprodajaUtil.initPartnerComboBox(cbDobavljac, -1);
         }
 
         private void initKalkulacijaColumns()
@@ -43,6 +47,14 @@ namespace Veleprodaja.view_dodaj
             dgPredhodneKalkulacije.Columns.Add(col);
         }
 
+        private void popuniPredhodneKalkulacije()
+        {
+            listaPredhodnihKalkulacija = VeleprodajaUtil.getDAOFactory().getKalkulacijaDAO().getAll();
+            foreach (KalkulacijaDTO kalkulacija in listaPredhodnihKalkulacija)
+            {
+                dgPredhodneKalkulacije.Rows.Add(new object[] { kalkulacija.RedniBroj, kalkulacija.Datum, kalkulacija.Partner.Naziv, "Izmjeni" });
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             

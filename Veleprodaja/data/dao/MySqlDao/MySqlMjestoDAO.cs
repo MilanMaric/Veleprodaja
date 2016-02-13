@@ -31,7 +31,8 @@ namespace Veleprodaja.data.dao.MySqlDao
         public static MjestoDTO readerToMjestoDTO(MySqlDataReader reader)
         {
             MjestoDTO mjesto = new MjestoDTO();
-            mjesto.Naziv = reader["Naziv"].ToString();
+           
+                mjesto.Naziv = reader["NazivMjesto"].ToString();
             mjesto.PostanskiBroj = reader.GetInt32("PostanskiBroj") ;
             return mjesto;
         }

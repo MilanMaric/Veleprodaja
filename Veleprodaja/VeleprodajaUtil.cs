@@ -37,7 +37,7 @@ namespace Veleprodaja
             }
         }
 
-        internal static void initJedinicaMjereComboBox(ComboBox cb, string sifra)
+        public static void initJedinicaMjereComboBox(ComboBox cb, string sifra)
         {
             cb.Items.Clear();
             List<JedinicaMjereDTO> lista = VeleprodajaUtil.getDAOFactory().getJedinicaMjereDAO().getAll();
@@ -50,5 +50,20 @@ namespace Veleprodaja
                 }
             }
         }
+
+        public static void initPartnerComboBox(ComboBox cb, int jib)
+        {
+            cb.Items.Clear();
+            List<PartnerDTO> lista = VeleprodajaUtil.getDAOFactory().getPartnerDAO().getAll();
+            foreach (PartnerDTO partner in lista)
+            {
+                cb.Items.Add(partner);
+                if (partner.Jib == jib)
+                {
+                    cb.SelectedIndex = cb.Items.Count - 1;
+                }
+            }
+        }
+        
     }
 }

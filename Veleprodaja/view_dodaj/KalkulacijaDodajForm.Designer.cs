@@ -33,9 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbDobavljac = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.dgPredhodneKalkulacije = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,13 +81,13 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Redni broj";
             // 
-            // comboBox1
+            // cbDobavljac
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(140, 74);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(390, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cbDobavljac.FormattingEnabled = true;
+            this.cbDobavljac.Location = new System.Drawing.Point(140, 74);
+            this.cbDobavljac.Name = "cbDobavljac";
+            this.cbDobavljac.Size = new System.Drawing.Size(390, 21);
+            this.cbDobavljac.TabIndex = 10;
             // 
             // button2
             // 
@@ -119,14 +120,24 @@
             this.dgPredhodneKalkulacije.Size = new System.Drawing.Size(774, 269);
             this.dgPredhodneKalkulacije.TabIndex = 12;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 209);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Predhodne kalkulacije:";
+            // 
             // KalkulacijaDodajForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 515);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dgPredhodneKalkulacije);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbDobavljac);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label2);
@@ -139,9 +150,10 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.textBox3, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.cbDobavljac, 0);
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.dgPredhodneKalkulacije, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -155,8 +167,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbDobavljac;
         private System.Windows.Forms.Button button2;
         protected System.Windows.Forms.DataGridView dgPredhodneKalkulacije;
+        private System.Windows.Forms.Label label4;
     }
 }
