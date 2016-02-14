@@ -22,11 +22,10 @@ namespace Veleprodaja.data.dao.MySqlDao
             List<OtpremnicaDTO> lista = new List<OtpremnicaDTO>();
             while (reader.Read())
             {
-                OtpremnicaDTO otpremnica = readerToOtpremnicaDTO(reader);
-                otpremnica.Partner = MySqlPartnerDAO.readerToPartnerDTO(reader);
-                otpremnica.Partner.Mjesto = MySqlMjestoDAO.readerToMjestoDTO(reader);
-                updateObjectIznos(otpremnica);
-                lista.Add(otpremnica);
+                OtpremnicaDTO kalkulacija = readerToOtpremnicaDTO(reader);
+                kalkulacija.Partner = MySqlPartnerDAO.readerToPartnerDTO(reader);
+                kalkulacija.Partner.Mjesto = MySqlMjestoDAO.readerToMjestoDTO(reader);
+                lista.Add(kalkulacija);
             }
             reader.Close();
             ConnectionPool.checkInConnection(connection);
@@ -59,7 +58,7 @@ namespace Veleprodaja.data.dao.MySqlDao
         public void updateObjectIznos(OtpremnicaDTO otpremnica)
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
-            MySqlCommand command = new MySqlCommand("iznosOtpremnice", connection);
+            MySqlCommand command = new MySqlCommand("iznosKalkulacije", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("rb", otpremnica.RedniBroj);
             command.Parameters["rb"].Direction = System.Data.ParameterDirection.Input;

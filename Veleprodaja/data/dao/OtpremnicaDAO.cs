@@ -11,6 +11,6 @@ namespace Veleprodaja.data.dao
     {
          List<OtpremnicaDTO> getAll();
          int insert(OtpremnicaDTO otpremnica);
-
+        void updateObjectIznos(OtpremnicaDTO otpremnica);
     }
 }

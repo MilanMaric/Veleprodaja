@@ -82,8 +82,9 @@ create procedure iznosOtpremnice (in rb int, out velIznos double,out izSaRabatom
 begin 
 set velIznos=0.0;
 set izSaRabatom=0.0;
+select sum(VeleprodajniIznos),sum(IznosSaRabatom)  from stavka_otpremnica_view where RedniBroj=rb;
 select sum(VeleprodajniIznos),sum(IznosSaRabatom)  into velIznos,izSaRabatom from stavka_otpremnica_view where RedniBroj=rb;
-set iznosRabata=veleprodajniIznos-nabavniIznos;
+set iznosRabata=velIznos-izSaRabatom;
 end $$
 delimiter ;
 

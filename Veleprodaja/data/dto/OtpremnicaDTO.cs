@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Veleprodaja.data.dto
 {
-    public class OtpremnicaDTO:StavkaKnjigeTrgovineNaVelikoDTO
+    public class OtpremnicaDTO: StavkaKnjigeTrgovineNaVelikoDTO
     {
         private RacunDTO racun;
-        private StavkaKnjigeTrgovineNaVelikoDTO stavkaKnjigeTrgovineNaVelikoDTO;
 
         public OtpremnicaDTO(StavkaKnjigeTrgovineNaVelikoDTO stavkaKnjigeTrgovineNaVelikoDTO)
         {
@@ -28,6 +27,28 @@ namespace Veleprodaja.data.dto
         {
             get { return racun; }
             set { racun = value; }
+        }
+
+        private double veleprodajniIznos;
+
+        public double VeleprodajniIznos
+        {
+            get { return veleprodajniIznos; }
+            set { veleprodajniIznos = value; }
+        }
+        private double iznosSaRabatom;
+
+        public double IznosSaRabatom
+        {
+            get { return iznosSaRabatom; }
+            set { iznosSaRabatom = value; }
+        }
+        private double iznosRabata;
+
+        public double IznosRabata
+        {
+            get { return iznosRabata; }
+            set { iznosRabata = value; }
         }
 
     }

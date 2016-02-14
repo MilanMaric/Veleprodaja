@@ -11,7 +11,7 @@ namespace Veleprodaja.data.dao.MySqlDao
     public class MySqlStavkaOtpremniceDAO :StavkaOtpremniceDAO 
     {
         private string qGetByKalkulacija = "select * from stavka_otpremnica_view_detaljno where RedniBroj=?RedniBroj;";
-        private string qInsert = "insert into stavka_otpremnice (SifraRoba,Kolicina,VeleprodajnaCijena,Rabat) values (?SifraRoba,?Kolicina,?VeleprodajnaCijena,?Rabat);";
+        private string qInsert = "insert into stavka_otpremnice (RedniBroj,SifraRoba,Kolicina,VeleprodajnaCijena,Rabat) values (?RedniBroj,?SifraRoba,?Kolicina,?VeleprodajnaCijena,?Rabat);";
 
         public List<StavkaOtpremniceDTO> getByOtpremnica(OtpremnicaDTO otpremnica)
         {

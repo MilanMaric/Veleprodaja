@@ -83,10 +83,11 @@ namespace Veleprodaja.view_dodaj
 
         private void fillOtpremnice()
         {
+            dgPredhodneKalkulacije.Rows.Clear();
             List<OtpremnicaDTO> lista = VeleprodajaUtil.getDAOFactory().getOtpremnicaDAO().getAll();
             foreach (OtpremnicaDTO otpremnica in lista)
             {
-                dgPredhodneKalkulacije.Rows.Add(new object[] { otpremnica, otpremnica.RedniBroj, otpremnica.Datum.ToShortDateString(), otpremnica.Partner });
+                dgPredhodneKalkulacije.Rows.Add(new object[] { otpremnica, otpremnica.RedniBroj, otpremnica.Datum.ToShortDateString(), otpremnica.Partner,otpremnica.VeleprodajniIznos,otpremnica.IznosRabata,otpremnica.IznosSaRabatom,"Izmjeni","Izmjeni stavke" });
             }
         }
 
@@ -96,7 +97,7 @@ namespace Veleprodaja.view_dodaj
             {
                 if (e.ColumnIndex == 8)
                 {
-                    StavkaOtpremniceDodajForm sodf = new StavkaOtpremniceDodajForm((OtpremnicaDTO)dgPredhodneKalkulacije.Rows[e.RowIndex].Cells["colObject"].Value);
+                    StavkaOtpremniceDodajForm sodf = new StavkaOtpremniceDodajForm((OtpremnicaDTO)dgPredhodneKalkulacije.Rows[e.RowIndex].Cells["colObjekat"].Value);
                     sodf.ShowDialog();
                 }
             }

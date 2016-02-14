@@ -124,7 +124,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dgStavke);
             this.splitContainer2.Size = new System.Drawing.Size(801, 276);
-            this.splitContainer2.SplitterDistance = 118;
+            this.splitContainer2.SplitterDistance = 119;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox1
@@ -290,7 +290,7 @@
             this.dgStavke.ReadOnly = true;
             this.dgStavke.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgStavke.RowHeadersVisible = false;
-            this.dgStavke.Size = new System.Drawing.Size(801, 154);
+            this.dgStavke.Size = new System.Drawing.Size(801, 153);
             this.dgStavke.TabIndex = 13;
             // 
             // colObject
@@ -460,9 +460,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 94);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.Size = new System.Drawing.Size(100, 13);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Cijena";
+            this.label7.Text = "Veleprodajna cijena";
             // 
             // tbxRabat
             // 
@@ -470,7 +470,6 @@
             this.tbxRabat.Name = "tbxRabat";
             this.tbxRabat.Size = new System.Drawing.Size(203, 20);
             this.tbxRabat.TabIndex = 7;
-            this.tbxRabat.TextChanged += new System.EventHandler(this.tbxRabat_TextChanged);
             // 
             // label6
             // 
