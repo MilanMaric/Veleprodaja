@@ -142,5 +142,26 @@ namespace Veleprodaja
                 objectToRow(roba);
             }
         }
+
+        private void RobaPregledForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (dgPregled.SelectedRows.Count == 1)
+                { 
+                izabranaRoba=(RobaDTO)dgPregled.SelectedRows[0].Cells["colObject"].Value;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                }
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                izabranaRoba = null;
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
+
+        }
     }
 }

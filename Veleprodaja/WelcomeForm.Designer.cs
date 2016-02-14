@@ -34,6 +34,9 @@
             this.robaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeRobeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sifarnikRobeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.dodavanjeJediniceMjereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.partneriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeNovogPartneraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSvihPartneraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,9 +46,9 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.dodavanjeNovogMjestaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSvihMjestaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.kalkulacijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaKalkulacijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pregledSvihKalkulacijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.otpremnicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,15 +58,11 @@
             this.noviRacunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSvihRacunaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledRacunaPoPartnerimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.poToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledKnjigeTrgovineNaVelikoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.promjenaPoslovneGodineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.dodavanjeJediniceMjereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,6 +122,23 @@
             this.sifarnikRobeToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.sifarnikRobeToolStripMenuItem.Text = "Sifarnik robe";
             this.sifarnikRobeToolStripMenuItem.Click += new System.EventHandler(this.sifarnikRobeToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(204, 6);
+            // 
+            // dodavanjeJediniceMjereToolStripMenuItem
+            // 
+            this.dodavanjeJediniceMjereToolStripMenuItem.Name = "dodavanjeJediniceMjereToolStripMenuItem";
+            this.dodavanjeJediniceMjereToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.dodavanjeJediniceMjereToolStripMenuItem.Text = "Dodavanje jedinice mjere";
+            this.dodavanjeJediniceMjereToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeJediniceMjereToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(204, 6);
             // 
             // partneriToolStripMenuItem
             // 
@@ -190,11 +206,15 @@
             this.pregledSvihMjestaToolStripMenuItem.Text = "Pregled svih mjesta";
             this.pregledSvihMjestaToolStripMenuItem.Click += new System.EventHandler(this.pregledSvihMjestaToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(211, 6);
+            // 
             // kalkulacijaToolStripMenuItem
             // 
             this.kalkulacijaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaKalkulacijaToolStripMenuItem,
-            this.pregledSvihKalkulacijaToolStripMenuItem,
             this.toolStripMenuItem2});
             this.kalkulacijaToolStripMenuItem.Name = "kalkulacijaToolStripMenuItem";
             this.kalkulacijaToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -203,15 +223,9 @@
             // novaKalkulacijaToolStripMenuItem
             // 
             this.novaKalkulacijaToolStripMenuItem.Name = "novaKalkulacijaToolStripMenuItem";
-            this.novaKalkulacijaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.novaKalkulacijaToolStripMenuItem.Text = "Nova kalkulacija";
+            this.novaKalkulacijaToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.novaKalkulacijaToolStripMenuItem.Text = "Kalkulacija trgovine na veliko";
             this.novaKalkulacijaToolStripMenuItem.Click += new System.EventHandler(this.novaKalkulacijaToolStripMenuItem_Click);
-            // 
-            // pregledSvihKalkulacijaToolStripMenuItem
-            // 
-            this.pregledSvihKalkulacijaToolStripMenuItem.Name = "pregledSvihKalkulacijaToolStripMenuItem";
-            this.pregledSvihKalkulacijaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.pregledSvihKalkulacijaToolStripMenuItem.Text = "Pregled svih kalkulacija";
             // 
             // toolStripMenuItem2
             // 
@@ -274,6 +288,11 @@
             this.pregledRacunaPoPartnerimaToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.pregledRacunaPoPartnerimaToolStripMenuItem.Text = "Pregled racuna po partnerima";
             // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(235, 6);
+            // 
             // poToolStripMenuItem
             // 
             this.poToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -302,33 +321,6 @@
             this.promjenaPoslovneGodineToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.promjenaPoslovneGodineToolStripMenuItem.Text = "Promjena poslovne godine";
             // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(204, 6);
-            // 
-            // dodavanjeJediniceMjereToolStripMenuItem
-            // 
-            this.dodavanjeJediniceMjereToolStripMenuItem.Name = "dodavanjeJediniceMjereToolStripMenuItem";
-            this.dodavanjeJediniceMjereToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.dodavanjeJediniceMjereToolStripMenuItem.Text = "Dodavanje jedinice mjere";
-            this.dodavanjeJediniceMjereToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeJediniceMjereToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(235, 6);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(211, 6);
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(204, 6);
-            // 
             // WelcomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,6 +330,7 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "WelcomeForm";
             this.Text = "Veleprodajno knjigovodstvo - KV";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -369,7 +362,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem poToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledKnjigeTrgovineNaVelikoToolStripMenuItem;
-        protected System.Windows.Forms.ToolStripMenuItem pregledSvihKalkulacijaToolStripMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem sifarnikRobeToolStripMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem pregledSvihPartneraToolStripMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem pregledSvihOtpremnicaToolStripMenuItem;

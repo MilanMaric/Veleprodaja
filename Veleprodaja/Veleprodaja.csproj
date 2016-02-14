@@ -90,6 +90,12 @@
     <Compile Include="view_dodaj\KalkulacijaDodajForm.Designer.cs">
       <DependentUpon>KalkulacijaDodajForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view_dodaj\KalkulacijaIzmjeniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view_dodaj\KalkulacijaIzmjeniForm.Designer.cs">
+      <DependentUpon>KalkulacijaIzmjeniForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view_dodaj\MjestoDodajForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <EmbeddedResource Include="view_dodaj\KalkulacijaDodajForm.resx">
       <DependentUpon>KalkulacijaDodajForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view_dodaj\KalkulacijaIzmjeniForm.resx">
+      <DependentUpon>KalkulacijaIzmjeniForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view_dodaj\MjestoDodajForm.resx">
       <DependentUpon>MjestoDodajForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view_dodaj\StavkaKalkulacijeDodajForm.resx">
       <DependentUpon>StavkaKalkulacijeDodajForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view_pregled\RobaPregledForm.resx">
+      <DependentUpon>RobaPregledForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeForm.resx">
       <DependentUpon>WelcomeForm.cs</DependentUpon>

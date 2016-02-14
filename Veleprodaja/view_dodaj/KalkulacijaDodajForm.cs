@@ -88,6 +88,18 @@ namespace Veleprodaja.view_dodaj
                     this.Show();
                 }
             }
+            if (e.ColumnIndex == 7)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    KalkulacijaDTO kalkulacija = (KalkulacijaDTO)dgPredhodneKalkulacije.Rows[e.RowIndex].Cells["colObjekat"].Value;
+                    KalkulacijaIzmjeniForm kif = new KalkulacijaIzmjeniForm(kalkulacija);
+                    if (kif.ShowDialog() == DialogResult.OK)
+                    {
+                        popuniPredhodneKalkulacije();
+                    }
+                }
+            }
 
         }
 

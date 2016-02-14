@@ -12,5 +12,7 @@ namespace Veleprodaja.data.dao
         List<KalkulacijaDTO> getAll();
         int insert(KalkulacijaDTO kalkulacija);
         void updateObjectIznos(KalkulacijaDTO kalkulacija);
+
+        int update(KalkulacijaDTO kalkulacija);
     }
 }

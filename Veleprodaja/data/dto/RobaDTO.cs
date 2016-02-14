@@ -29,5 +29,21 @@ namespace Veleprodaja.data.dto
             get { return jedinicaMjere; }
             set { jedinicaMjere = value; }
         }
+
+        private double raspolozivaKolicina;
+
+        public double RaspolozivaKolicina
+        {
+            get { return raspolozivaKolicina; }
+            set { raspolozivaKolicina = value; }
+        }
+
+        private double poslednjaCijena;
+
+        public double PoslednjaCijena
+        {
+            get { return poslednjaCijena; }
+            set { poslednjaCijena = value; }
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace Veleprodaja.data.dao
         List<RobaDTO> getByNaziv(String naziv);
         int insert(RobaDTO roba);
         int update(RobaDTO roba,int staraSifra);
+        void getKolicinaICijena(RobaDTO roba);
     }
 }

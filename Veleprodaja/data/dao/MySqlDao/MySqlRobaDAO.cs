@@ -14,7 +14,7 @@ namespace Veleprodaja.data.dao.MySqlDao
         private string qGetBySifra="select * from roba_sa_jedinicom_mjere where SifraRoba=?sifra;";
         private string qInsert = "INSERT INTO `veleprodaja`.`roba` (`SifraRoba`, `Naziv`, `SifraJediniceMjere`) VALUES (?sifra, ?naziv, ?jm);";
         private string qUpdate = "UPDATE `veleprodaja`.`roba` SET `SifraRoba`=?sifra, `Naziv`=?naziv, `SifraJediniceMjere`=?jm WHERE `SifraRoba`=?staraSifra;";
-        private string qGetByNaziv = "select * from roba_sa_jedinicom_mjere where Naziv like '%?naziv%';";
+        private string qGetByNaziv = "select * from roba_sa_jedinicom_mjere where Naziv like ?naziv;";
 
         public List<RobaDTO> getAll()
         {
@@ -39,7 +39,7 @@ namespace Veleprodaja.data.dao.MySqlDao
             MySqlConnection connection = ConnectionPool.checkOutConnection();
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = qGetByNaziv;
-            command.Parameters.AddWithValue("naziv",naziv);
+            command.Parameters.AddWithValue("naziv","%"+naziv+"%");
             MySqlDataReader reader = command.ExecuteReader();
             List<RobaDTO> lista = new List<RobaDTO>();
             while (reader.Read())
@@ -98,6 +98,30 @@ namespace Veleprodaja.data.dao.MySqlDao
             return roba;
         }
 
+        public void getKolicinaICijena(RobaDTO roba)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = new MySqlCommand("iznosKalkulacije", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("sifra", roba.SifraRoba);
+            command.Parameters["sifra"].Direction = System.Data.ParameterDirection.Input;
+            command.Parameters.AddWithValue("@prodajna", roba.PoslednjaCijena);
+            command.Parameters["@prodajna"].Direction = System.Data.ParameterDirection.Output;
+            command.Parameters.AddWithValue("@kol", roba.RaspolozivaKolicina);
+            command.Parameters["@kol"].Direction = System.Data.ParameterDirection.Output;
+            command.ExecuteNonQuery();
+            try
+            {
+                roba.PoslednjaCijena = Convert.ToDouble(command.Parameters["@prodajna"].Value.ToString());
+                roba.RaspolozivaKolicina = Convert.ToDouble(command.Parameters["@kol"].Value.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            Console.WriteLine("K: " + roba.RaspolozivaKolicina+" C:"+roba.PoslednjaCijena);
+            ConnectionPool.checkInConnection(connection);
+        }
         public static RobaDTO readerToRobaDTO(MySqlDataReader reader)
         {
             RobaDTO roba = new RobaDTO();

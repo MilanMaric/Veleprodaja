@@ -12,6 +12,7 @@ namespace Veleprodaja.data.dao.MySqlDao
     {
         private string qGetAll = "select * from kalkulacija_osnovno where PoslovnaGodina=?PoslovnaGodina;";
         private string qInsert = "INSERT INTO `veleprodaja`.`kalkulacija` (`RedniBroj`, `BrojFaktureDobavljaca`) VALUES (?RedniBroj, ?BrojFaktureDobavljaca);";
+        private string qUpdate = "UPDATE `veleprodaja`.`kalkulacija` SET `BrojFaktureDobavljaca`=?brojFaktureDobavljaca WHERE `RedniBroj`=?RedniBroj;";
         public List<KalkulacijaDTO> getAll()
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
@@ -76,6 +77,19 @@ namespace Veleprodaja.data.dao.MySqlDao
             }
             Console.WriteLine("V: " + kalkulacija.VeleprodajnaVrijednost + " n " + kalkulacija.NetoNabavnaVrijednost + " r " + kalkulacija.RazlikaUCijeni);
             ConnectionPool.checkInConnection(connection);
+        }
+
+        public int update(KalkulacijaDTO kalkulacija)
+        {
+            int rows = new MySqlStavkaKnjigeTrgovineNaVeliko().update(kalkulacija);
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qUpdate;
+            command.Parameters.AddWithValue("RedniBroj", kalkulacija.RedniBroj);
+            command.Parameters.AddWithValue("BrojFaktureDobavljaca", kalkulacija.BrojFaktureDobavljaca);
+            int rows1 = command.ExecuteNonQuery();
+            ConnectionPool.checkInConnection(connection);
+            return rows1;
         }
 
         public static KalkulacijaDTO readerToKalkulacijaDTO(MySqlDataReader reader)

@@ -11,7 +11,7 @@ namespace Veleprodaja.data.dao.MySqlDao
     public class MySqlStavkaKnjigeTrgovineNaVeliko : StavkaKnjigeTrgovineNaVelikoDAO
     {
         private string qInsert = "INSERT INTO `veleprodaja`.`stavka_knjige_trgovine_na_veliko` (`PoslovnaGodina`, `JIB`, `Datum`) VALUES (?poslovnaGodina, ?jib, ?datum);";
-
+        private string qUpdate = "UPDATE `veleprodaja`.`stavka_knjige_trgovine_na_veliko` SET Datum=?datum,JIB=?jib WHERE `RedniBroj`=?RedniBroj;";
         public static StavkaKnjigeTrgovineNaVelikoDTO readerToStavkaKnjigeTrgovineNaVeliko(MySqlDataReader reader)
         {
             StavkaKnjigeTrgovineNaVelikoDTO stavka = new StavkaKnjigeTrgovineNaVelikoDTO();
@@ -35,6 +35,19 @@ namespace Veleprodaja.data.dao.MySqlDao
                 stavka.RedniBroj =(int) command.LastInsertedId;
             }
             return rows;
+        }
+
+        public int update(StavkaKnjigeTrgovineNaVelikoDTO stavka)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qUpdate;
+            command.Parameters.AddWithValue("RedniBroj", stavka.RedniBroj);
+            command.Parameters.AddWithValue("jib", stavka.Partner.Jib);
+            command.Parameters.AddWithValue("datum", stavka.Datum);
+            int rows1 = command.ExecuteNonQuery();
+            ConnectionPool.checkInConnection(connection);
+            return rows1;
         }
     }
 }
