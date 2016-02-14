@@ -85,5 +85,16 @@ namespace Veleprodaja
             otvorenaFormaZaDodavanje.ShowDialog();
             otvorenaFormaZaDodavanje = null;
         }
+
+        private void RootForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dodaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OtpremnicaDodajForm odf = new OtpremnicaDodajForm();
+            odf.ShowDialog();
+        }
     }
 }

@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Veleprodaja.data.dto
+{
+    public class OtpremnicaDTO:StavkaKnjigeTrgovineNaVelikoDTO
+    {
+        private RacunDTO racun;
+
+        internal RacunDTO Racun
+        {
+            get { return racun; }
+            set { racun = value; }
+        }
+
+    }
+}

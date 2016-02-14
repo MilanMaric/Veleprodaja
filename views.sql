@@ -8,6 +8,14 @@ drop view if exists kalkulacija_osnovno;
 create view kalkulacija_osnovno(RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB,Naziv,Adresa,PostanskiBroj,NazivMjesto) as
 SELECT k.RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,p.JIB,p.Naziv,p.Adresa,p.PostanskiBroj,m.NazivMjesto FROM veleprodaja.kalkulacija k inner join stavka_knjige_trgovine_na_veliko s on s.RedniBroj=k.RedniBroj inner join partner p on p.jib=s.jib inner join mjesto m on m.PostanskiBroj=p.PostanskiBroj;
 
+drop view if exists otpremnica_osnovno;
+create view otpremnica_osnovno(RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB,Naziv,Adresa,NazivMjesto) as
+select RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB,Naziv,Adresa,NazivMjesto from otpremnica natural join stavka_knjige_trgovine_na_veliko natural join partner natural join mjesto;
+
+drop view if exists otpremnica_bezPartnera;
+create view otpremnica_bezPartnera(RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB) as
+select RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB from otpremnica natural join stavka_knjige_trgovine_na_veliko;
+
 drop view if exists kalkulacija_bezPartnera;
 create view kalkulacija_bezPartnera(RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB) as 
 select k.RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB from kalkulacija k inner join stavka_knjige_trgovine_na_veliko s on k.RedniBroj=s.RedniBroj;
