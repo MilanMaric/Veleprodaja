@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Veleprodaja
+namespace Veleprodaja.view_dodaj
 {
-    public partial class WelcomeForm : RootForm
+    public partial class OtpremnicaDodajForm : RootForm
     {
-        public WelcomeForm()
+        public OtpremnicaDodajForm()
         {
             InitializeComponent();
         }

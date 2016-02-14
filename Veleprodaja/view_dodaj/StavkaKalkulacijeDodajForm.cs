@@ -11,7 +11,7 @@ using Veleprodaja.data.dto;
 
 namespace Veleprodaja.view_dodaj
 {
-    public partial class StavkaKalkulacijeDodajForm : WelcomeForm
+    public partial class StavkaKalkulacijeDodajForm : RootForm
     {
         private KalkulacijaDTO kalkulacija = null;
         private RobaDTO izabranaRoba = null;
@@ -35,7 +35,7 @@ namespace Veleprodaja.view_dodaj
             List<StavkaKalkulacijeDTO> listaStavki = VeleprodajaUtil.getDAOFactory().getStavkaKalkulacijeDAO().getByKalkulacija(kalkulacija);
             foreach (StavkaKalkulacijeDTO stavka in listaStavki)
             {
-                dgStavke.Rows.Add(new object[] { stavka, stavka.Roba.Naziv, stavka.Kolicina, stavka.NabavnaCijena, stavka.Rabat, stavka.VeleprodajnaCijena, stavka });
+                dgStavke.Rows.Add(new object[] { stavka, stavka.Roba.Naziv, stavka.Kolicina, stavka.NabavnaCijena, stavka.Rabat, stavka.VeleprodajnaCijena, "Izmjeni" });
             }
         }
 
@@ -73,6 +73,16 @@ namespace Veleprodaja.view_dodaj
 
         }
 
+        private void fillControls()
+        {
+            izabranaRoba = stavka.Roba;
+            fillIzabranaRobaData();
+            tbxKolicina.Text = stavka.Kolicina.ToString();
+            tbxRabat.Text = stavka.Rabat.ToString() ;
+            tbxNabavnaCijena.Text = stavka.NabavnaCijena.ToString();
+            tbxVeleprodajnaCijena.Text = stavka.VeleprodajnaCijena.ToString();
+        }
+
         private void fillObject(StavkaKalkulacijeDTO stavka)
         {
             stavka.NabavnaCijena = Convert.ToDouble(tbxNabavnaCijena.Text);
@@ -93,11 +103,43 @@ namespace Veleprodaja.view_dodaj
             tbxVeleprodajnaCijena.Text = "";
             izabranaRoba = null;
             gbIzabranaRoba.Hide();
+            stavka = null;
+        }
+
+        private bool validate()
+        {
+            bool check = true;
+            double result;
+            if (izabranaRoba == null)
+            {
+                check = false;
+            }
+            if (string.IsNullOrEmpty(tbxKolicina.Text))
+            {
+                check = false;
+            }
+            if (!Double.TryParse(tbxKolicina.Text, out result))
+            {
+                check = false;
+            }
+            if (!Double.TryParse(tbxKolicina.Text,out  result))
+            {
+                check = false;
+            }
+            if (!Double.TryParse(tbxNabavnaCijena.Text, out result))
+            {
+                check = false;
+            }
+            if (!Double.TryParse(tbxVeleprodajnaCijena.Text, out result))
+            {
+                check = false;
+            }
+            return check;
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            if (izabranaRoba != null && kalkulacija!=null)
+            if(validate())
             {
                 if (stavka == null)
                 {
@@ -107,8 +149,43 @@ namespace Veleprodaja.view_dodaj
                     fillStavke();
                     fillKalkulacijaValues();
                     emptyControlls();
+                    stavka = null;
+                }
+                else
+                {
+                    int staraRoba = stavka.Roba.SifraRoba;
+                    fillObject(stavka);
+                    VeleprodajaUtil.getDAOFactory().getStavkaKalkulacijeDAO().update(stavka,staraRoba);
+                    stavka = null;
+                    fillStavke();
                 }
             }
+            else
+            {
+                MessageBox.Show(this, "Neispravan unos", "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgStavke_SelectionChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void dgStavke_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 6)
+                {
+                    stavka = (StavkaKalkulacijeDTO)dgStavke.Rows[e.RowIndex].Cells["colObject"].Value;
+                    fillControls();
+                }
+            }
+        }
+
+        private void btnPonistiUnos_Click(object sender, EventArgs e)
+        {
+            emptyControlls();
         }
     }
 }

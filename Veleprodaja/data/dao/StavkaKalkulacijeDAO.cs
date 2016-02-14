@@ -12,5 +12,7 @@ namespace Veleprodaja.data.dao
         List<StavkaKalkulacijeDTO> getByKalkulacija(KalkulacijaDTO kalkulacija);
 
         int insert(StavkaKalkulacijeDTO stavka);
+
+        void update(StavkaKalkulacijeDTO stavka,int staraSifraRobe);
     }
 }

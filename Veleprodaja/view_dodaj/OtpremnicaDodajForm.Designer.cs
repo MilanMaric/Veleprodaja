@@ -1,6 +1,6 @@
-﻿namespace Veleprodaja
+﻿namespace Veleprodaja.view_dodaj
 {
-    partial class WelcomeForm
+    partial class OtpremnicaDodajForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "WelcomeForm";
+            this.Text = "OtpremnicaDodajForm";
         }
 
         #endregion

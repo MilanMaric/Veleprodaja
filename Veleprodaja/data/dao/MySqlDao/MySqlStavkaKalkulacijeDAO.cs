@@ -13,6 +13,8 @@ namespace Veleprodaja.data.dao.MySqlDao
         private string qGetByKalkulacija = "select * from stavka_kalkulacija_view_detaljno where RedniBroj=?RedniBroj;";
         private string qInsert = "INSERT INTO `veleprodaja`.`stavka_kalkulacije` (`RedniBroj`, `SifraRoba`, `Kolicina`, `NabavnaCijena`, `Rabat`, `VeleprodajnaCijena`) VALUES (?RedniBroj,?SifraRoba , ?Kolicina, ?NabavnaCijena, ?Rabat, ?VeleprodajnaCijena);";
 
+        private string qUpdate = "update stavka_kalkulacije set SifraRoba=?SifraRoba,Kolicina=?Kolicina,NabavnaCijena=?NabavnaCijena,Rabat=?Rabat,VeleprodajnaCijena=?VeleprodajnaCijena where RedniBroj=?RedniBroj and SifraRoba=?StaraSifra";
+
         public List<StavkaKalkulacijeDTO> getByKalkulacija(KalkulacijaDTO kalkulacija)
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
@@ -65,6 +67,23 @@ namespace Veleprodaja.data.dao.MySqlDao
             return stavka;
         }
 
-        
+
+
+
+        public void update(StavkaKalkulacijeDTO stavka,int staraSifraRobe)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qUpdate;
+            command.Parameters.AddWithValue("RedniBroj", stavka.Kalkulacija.RedniBroj);
+            command.Parameters.AddWithValue("StaraSifra", staraSifraRobe);
+            command.Parameters.AddWithValue("SifraRoba", stavka.Roba.SifraRoba);
+            command.Parameters.AddWithValue("Kolicina", stavka.Kolicina);
+            command.Parameters.AddWithValue("NabavnaCijena", stavka.NabavnaCijena);
+            command.Parameters.AddWithValue("Rabat", stavka.Rabat);
+            command.Parameters.AddWithValue("VeleprodajnaCijena", stavka.VeleprodajnaCijena);
+            int rows = command.ExecuteNonQuery();
+            ConnectionPool.checkInConnection(connection);
+        }
     }
 }

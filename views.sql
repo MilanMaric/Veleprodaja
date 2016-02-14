@@ -54,8 +54,6 @@ set kol=nabavljenaKolicina-prodataKolicina;
 end $$
 delimiter ;
 
-
-insert into knjiga_trgovine_na_veliko values(2016);
 /*
 delimiter $$
 create trigger stavka_kalkulacije_insert_trigger before insert on stavka_kalkulacije

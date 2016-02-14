@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Veleprodaja
 {
-    public partial class PregledForm : WelcomeForm
+    public partial class PregledForm : RootForm
     {
         public PregledForm()
         {

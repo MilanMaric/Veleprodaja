@@ -11,7 +11,7 @@ using Veleprodaja.data.dto;
 
 namespace Veleprodaja.view_dodaj
 {
-    public partial class KalkulacijaDodajForm : WelcomeForm
+    public partial class KalkulacijaDodajForm : RootForm
     {
         private List<KalkulacijaDTO> listaPredhodnihKalkulacija;
         public KalkulacijaDodajForm()
