@@ -78,11 +78,13 @@
     <Compile Include="data\dao\MySqlDao\MySqlRobaDAO.cs" />
     <Compile Include="data\dao\MySqlDao\MySqlStavkaKalkulacijeDAO.cs" />
     <Compile Include="data\dao\MySqlDao\MySqlStavkaKnjigeTrgovineNaVeliko.cs" />
+    <Compile Include="data\dao\MySqlDao\MySqlStavkaOtpremniceDAO.cs" />
     <Compile Include="data\dao\OtpremnicaDAO.cs" />
     <Compile Include="data\dao\PartnerDAO.cs" />
     <Compile Include="data\dao\RobaDAO.cs" />
     <Compile Include="data\dao\StavkaKalkulacijeDAO.cs" />
     <Compile Include="data\dao\StavkaKnjigeTrgovineNaVelikoDAO.cs" />
+    <Compile Include="data\dao\StavkaOtpremniceDAO.cs" />
     <Compile Include="data\dto\BankaDTO.cs" />
     <Compile Include="data\dto\JedinicaMjereDTO.cs" />
     <Compile Include="data\dto\KalkulacijaDTO.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="data\dto\RobaDTO.cs" />
     <Compile Include="data\dto\StavkaKalkulacijeDTO.cs" />
     <Compile Include="data\dto\StavkaKnjigeTrgovineNaVelikoDTO.cs" />
+    <Compile Include="data\dto\StavkaOtpremniceDTO.cs" />
     <Compile Include="data\dto\ZiroRacunDTO.cs" />
     <Compile Include="DodajForm.cs">
       <SubType>Form</SubType>
@@ -136,6 +139,12 @@
     </Compile>
     <Compile Include="view_dodaj\StavkaKalkulacijeDodajForm.Designer.cs">
       <DependentUpon>StavkaKalkulacijeDodajForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view_dodaj\StavkaOtpremniceDodajForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view_dodaj\StavkaOtpremniceDodajForm.Designer.cs">
+      <DependentUpon>StavkaOtpremniceDodajForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view_pregled\MjestoPregledForm.cs">
       <SubType>Form</SubType>
@@ -234,6 +243,9 @@
     <EmbeddedResource Include="view_dodaj\StavkaKalkulacijeDodajForm.resx">
       <DependentUpon>StavkaKalkulacijeDodajForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view_dodaj\StavkaOtpremniceDodajForm.resx">
+      <DependentUpon>StavkaOtpremniceDodajForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view_pregled\RobaPregledForm.resx">
       <DependentUpon>RobaPregledForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view_dodaj\ZiroRacunDodajForm.resx">
       <DependentUpon>ZiroRacunDodajForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeForm.resx">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

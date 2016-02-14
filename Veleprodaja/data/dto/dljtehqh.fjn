@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Veleprodaja.data.dto
+{
+    public class StavkaOtpremniceDTO
+    {
+        private double kolicina;
+
+        public double Kolicina
+        {
+            get { return kolicina; }
+            set { kolicina = value; }
+        }
+        private double veleprodajnaCijena;
+        private double rabat;
+        private double cijenaSaRabatom;
+        private RobaDTO roba;
+        private OtpremnicaDTO otpremnica;
+
+    }
+}

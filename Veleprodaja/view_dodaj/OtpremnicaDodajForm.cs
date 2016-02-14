@@ -17,9 +17,11 @@ namespace Veleprodaja.view_dodaj
         {
             InitializeComponent();
             VeleprodajaUtil.initPartnerComboBox(cbKupac, -1);
+            initOtpremnicaColumns();
+            fillOtpremnice();
         }
 
-        private void initKalkulacijaColumns()
+        private void initOtpremnicaColumns()
         {
             dgPredhodneKalkulacije.Rows.Clear();
             dgPredhodneKalkulacije.Columns.Clear();
@@ -79,9 +81,25 @@ namespace Veleprodaja.view_dodaj
             
         }
 
+        private void fillOtpremnice()
+        {
+            List<OtpremnicaDTO> lista = VeleprodajaUtil.getDAOFactory().getOtpremnicaDAO().getAll();
+            foreach (OtpremnicaDTO otpremnica in lista)
+            {
+                dgPredhodneKalkulacije.Rows.Add(new object[] { otpremnica, otpremnica.RedniBroj, otpremnica.Datum.ToShortDateString(), otpremnica.Partner });
+            }
+        }
+
         private void dgPredhodneKalkulacijeCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 8)
+                {
+                    StavkaOtpremniceDodajForm sodf = new StavkaOtpremniceDodajForm((OtpremnicaDTO)dgPredhodneKalkulacije.Rows[e.RowIndex].Cells["colObject"].Value);
+                    sodf.ShowDialog();
+                }
+            }
         }
 
         private void btnDodajStavke_Click(object sender, EventArgs e)
@@ -89,6 +107,7 @@ namespace Veleprodaja.view_dodaj
             OtpremnicaDTO otpremnica = new OtpremnicaDTO();
             fillObject(otpremnica);
             VeleprodajaUtil.getDAOFactory().getOtpremnicaDAO().insert(otpremnica);
+            fillOtpremnice();
         }
     }
 }

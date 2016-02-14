@@ -15,5 +15,6 @@ namespace Veleprodaja.data.dao
         public abstract KalkulacijaDAO getKalkulacijaDAO();
         public abstract StavkaKalkulacijeDAO getStavkaKalkulacijeDAO();
         public abstract OtpremnicaDAO getOtpremnicaDAO();
+        public abstract StavkaOtpremniceDAO getStavkaOtpremniceDAO();
     }
 }

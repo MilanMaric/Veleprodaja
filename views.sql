@@ -3,18 +3,12 @@ drop view if exists roba_sa_jedinicom_mjere;
 create view roba_sa_jedinicom_mjere(SifraRoba,Naziv,SifraJediniceMjere,OpisJediniceMjere) as
 select SifraRoba,Naziv,r.SifraJediniceMjere,OpisJediniceMjere from roba r inner join jedinica_mjere j on r.SifraJediniceMjere=j.SifraJediniceMjere;
 
+-- KALKULACIJE 
 
 drop view if exists kalkulacija_osnovno;
 create view kalkulacija_osnovno(RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB,Naziv,Adresa,PostanskiBroj,NazivMjesto) as
 SELECT k.RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,p.JIB,p.Naziv,p.Adresa,p.PostanskiBroj,m.NazivMjesto FROM veleprodaja.kalkulacija k inner join stavka_knjige_trgovine_na_veliko s on s.RedniBroj=k.RedniBroj inner join partner p on p.jib=s.jib inner join mjesto m on m.PostanskiBroj=p.PostanskiBroj;
 
-drop view if exists otpremnica_osnovno;
-create view otpremnica_osnovno(RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB,Naziv,Adresa,NazivMjesto) as
-select RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB,Naziv,Adresa,NazivMjesto from otpremnica natural join stavka_knjige_trgovine_na_veliko natural join partner natural join mjesto;
-
-drop view if exists otpremnica_bezPartnera;
-create view otpremnica_bezPartnera(RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB) as
-select RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB from otpremnica natural join stavka_knjige_trgovine_na_veliko;
 
 drop view if exists kalkulacija_bezPartnera;
 create view kalkulacija_bezPartnera(RedniBroj,PoslovnaGodina,BrojFaktureDobavljaca,Datum,JIB) as 
@@ -62,20 +56,36 @@ set kol=nabavljenaKolicina-prodataKolicina;
 end $$
 delimiter ;
 
-/*
+
+-- OTPREMNICE
+
+drop view if exists otpremnica_osnovno;
+create view otpremnica_osnovno(RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB,Naziv,Adresa,PostanskiBroj,NazivMjesto) as
+select RedniBroj,PoslovnaGodina,Datum,RedniBrojRacuna,JIB,Naziv,Adresa,PostanskiBroj,NazivMjesto 
+from otpremnica natural join stavka_knjige_trgovine_na_veliko natural join partner natural join mjesto;
+
+drop view if exists stavka_otpremnica_view;
+create view stavka_otpremnica_view(RedniBroj,SifraRoba,Kolicina,VeleprodajnaCijena,Rabat,CijenaSaRabatom,VeleprodajniIznos,IznosSaRabatom)as
+select RedniBroj,SifraRoba,Kolicina,VeleprodajnaCijena,Rabat,VeleprodajnaCijena-Rabat*VeleprodajnaCijena/100 as CijenaSaRabatom,
+Kolicina*VeleprodajnaCijena as VeleprodajniIznos,
+Kolicina*(VeleprodajnaCijena-Rabat*VeleprodajnaCijena/100)as IznosSaRabatom from stavka_otpremnice;
+ 
+drop view if exists stavka_otpremnica_view_detaljno;
+create view stavka_otpremnica_view_detaljno(RedniBroj,SifraRoba,Naziv,SifraJediniceMjere,OpisJediniceMjere,Kolicina,VeleprodajnaCijena,Rabat,CijenaSaRabatom,VeleprodajniIznos,IznosSaRabatom)as
+SELECT RedniBroj,SifraRoba,Naziv,SifraJediniceMjere,OpisJediniceMjere,Kolicina,VeleprodajnaCijena,Rabat,CijenaSaRabatom,VeleprodajniIznos,IznosSaRabatom FROM veleprodaja.stavka_otpremnica_view natural join roba natural join jedinica_mjere;
+
+
+
+drop procedure if exists iznosOtpremnice;
 delimiter $$
-create trigger stavka_kalkulacije_insert_trigger before insert on stavka_kalkulacije
-for each row
-begin
-if (select exists(select * from stavka_kalkulacije s where s.RedniBroj=new.RedniBroj and s.SifraRoba=new.SifraRoba)) then
-
-else
-
-end if;
+create procedure iznosOtpremnice (in rb int, out velIznos double,out izSaRabatom double,out iznosRabata double)
+begin 
+set velIznos=0.0;
+set izSaRabatom=0.0;
+select sum(VeleprodajniIznos),sum(IznosSaRabatom)  into velIznos,izSaRabatom from stavka_otpremnica_view where RedniBroj=rb;
+set iznosRabata=veleprodajniIznos-nabavniIznos;
 end $$
 delimiter ;
 
 
--- drop view kalkulacija_osnovno;
--- drop view kalkulacija_bezPartnera;
-*/
+
