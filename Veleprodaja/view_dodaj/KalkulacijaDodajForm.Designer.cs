@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tbxBrojFaktureDobavljaca = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +38,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dtpDatumKalkulacije = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -96,6 +100,7 @@
             this.dgPredhodneKalkulacije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPredhodneKalkulacije.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgPredhodneKalkulacije.Location = new System.Drawing.Point(12, 234);
+            this.dgPredhodneKalkulacije.MultiSelect = false;
             this.dgPredhodneKalkulacije.Name = "dgPredhodneKalkulacije";
             this.dgPredhodneKalkulacije.ReadOnly = true;
             this.dgPredhodneKalkulacije.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -130,6 +135,21 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Datum kalkulacije";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.obrisiToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // obrisiToolStripMenuItem
+            // 
+            this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
+            this.obrisiToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.obrisiToolStripMenuItem.Text = "Obrisi";
+            this.obrisiToolStripMenuItem.Click += new System.EventHandler(this.obrisiToolStripMenuItem_Click);
+            // 
             // KalkulacijaDodajForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +176,7 @@
             this.Controls.SetChildIndex(this.dtpDatumKalkulacije, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgPredhodneKalkulacije)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +193,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpDatumKalkulacije;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem obrisiToolStripMenuItem;
     }
 }

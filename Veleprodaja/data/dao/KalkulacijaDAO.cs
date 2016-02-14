@@ -14,5 +14,7 @@ namespace Veleprodaja.data.dao
         void updateObjectIznos(KalkulacijaDTO kalkulacija);
 
         int update(KalkulacijaDTO kalkulacija);
+
+        void delete(KalkulacijaDTO kalkulacija);
     }
 }

@@ -88,5 +88,63 @@ set iznosRabata=velIznos-izSaRabatom;
 end $$
 delimiter ;
 
+drop table if exists stavka_kalkulacija_backup;
+create table stavka_kalkulacija_backup(
+id_backup integer not null auto_increment ,
+	RedniBroj             INTEGER NOT NULL,
+	SifraRoba             INTEGER NOT NULL,
+	Kolicina              INTEGER NOT NULL,
+	NabavnaCijena         FLOAT NOT NULL,
+	Rabat                 FLOAT NOT NULL,
+	VeleprodajnaCijena    FLOAT NOT NULL,
+    vrijeme datetime,
+	 PRIMARY KEY (id_backup)
+     );
+
+drop table if exists STAVKA_OTPREMNICE_BACKUP;
+CREATE TABLE STAVKA_OTPREMNICE_BACKUP
+(
+id_backup integer not null auto_increment,
+	SifraRoba             INTEGER NOT NULL,
+	RedniBroj             INTEGER NOT NULL,
+	Kolicina              FLOAT NOT NULL,
+	VeleprodajnaCijena    FLOAT NOT NULL,
+	Rabat                 FLOAT NULL,
+    Vrijeme datetime null,
+	 PRIMARY KEY (id_backup)
+)
+;
+
+drop trigger if exists stavka_kalkulacije_bck_update;
+create trigger stavka_kalkulacije_bck_update before update on stavka_kalkulacije
+for each row
+insert into stavka_kalkulacija_backup(RedniBroj,SifraRoba,Kolicina,NabavnaCijena,Rabat,VeleprodajnaCijena,Vrijeme) values(old.RedniBroj,old.SifraRoba,old.Kolicina,old.NabavnaCijena,old.Rabat,old.VeleprodajnaCijena,sysdate());
+
+drop trigger if exists stavka_kalkulacije_bck_delete;
+create trigger stavka_kalkulacije_bck_delete before delete on stavka_kalkulacije
+for each row
+insert into stavka_kalkulacija_backup(RedniBroj,SifraRoba,Kolicina,NabavnaCijena,Rabat,VeleprodajnaCijena,Vrijeme) values(old.RedniBroj,old.SifraRoba,old.Kolicina,old.NabavnaCijena,old.Rabat,old.VeleprodajnaCijena,sysdate());
+
+drop trigger if exists stavka_otpremnice_bck_update;
+create trigger stavka_otpremnice_bck_update before update on stavka_otpremnice
+for each row
+insert into stavka_otpremnice_backup(RedniBroj,SifraRoba,Kolicina,VeleprodajnaCijena,Rabat,Vrijeme) values (old.RedniBroj,old.SifraRoba,old.Kolicina,old.VeleprodajnaCijena,old.Rabat,sysdate());
+
+drop trigger if exists stavka_otpremnice_bck_delete;
+create trigger stavka_otpremnice_bck_delete before delete on stavka_otpremnice
+for each row
+insert into stavka_otpremnice_backup(RedniBroj,SifraRoba,Kolicina,VeleprodajnaCijena,Rabat,Vrijeme) values (old.RedniBroj,old.SifraRoba,old.Kolicina,old.VeleprodajnaCijena,old.Rabat,sysdate());
+
+
+delimiter $$
+create trigger stavka_knjige_delete after delete on stavka_knjige_trgovine_na_veliko
+for each row
+begin
+delete from kalkulacija where RedniBroj=old.RedniBroj;
+delete from otpremnica where RedniBroj=old.RedniBroj;
+delete from nivelacija where RedniBroj=old.RedniBroj;
+end $$
+delimiter ;
+
 
 

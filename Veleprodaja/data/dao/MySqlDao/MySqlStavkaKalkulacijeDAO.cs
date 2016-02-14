@@ -15,6 +15,8 @@ namespace Veleprodaja.data.dao.MySqlDao
 
         private string qUpdate = "update stavka_kalkulacije set SifraRoba=?SifraRoba,Kolicina=?Kolicina,NabavnaCijena=?NabavnaCijena,Rabat=?Rabat,VeleprodajnaCijena=?VeleprodajnaCijena where RedniBroj=?RedniBroj and SifraRoba=?StaraSifra";
 
+        private string qDelete = "delete from stavka_kalkulacije where RedniBroj=?RedniBroj and SifraRoba=?Sifra";
+
         public List<StavkaKalkulacijeDTO> getByKalkulacija(KalkulacijaDTO kalkulacija)
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
@@ -83,6 +85,18 @@ namespace Veleprodaja.data.dao.MySqlDao
             command.Parameters.AddWithValue("Rabat", stavka.Rabat);
             command.Parameters.AddWithValue("VeleprodajnaCijena", stavka.VeleprodajnaCijena);
             int rows = command.ExecuteNonQuery();
+            ConnectionPool.checkInConnection(connection);
+        }
+
+
+        public void delete(StavkaKalkulacijeDTO stavka)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qDelete;
+            command.Parameters.AddWithValue("SifraRoba", stavka.Roba.SifraRoba);
+            command.Parameters.AddWithValue("RedniBroj", stavka.Kalkulacija.RedniBroj);
+            command.ExecuteNonQuery();
             ConnectionPool.checkInConnection(connection);
         }
     }

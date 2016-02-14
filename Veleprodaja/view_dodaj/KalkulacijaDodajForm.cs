@@ -72,6 +72,7 @@ namespace Veleprodaja.view_dodaj
             col.HeaderText = "Izmjeni stavke";
             dgPredhodneKalkulacije.Columns.Add(col);
             dgPredhodneKalkulacije.CellContentClick += new DataGridViewCellEventHandler(dgPredhodneKalkulacijeCellContentClick);
+            dgPredhodneKalkulacije.ContextMenuStrip = contextMenuStrip1;
         }
 
         private void dgPredhodneKalkulacijeCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -131,6 +132,22 @@ namespace Veleprodaja.view_dodaj
             StavkaKalkulacijeDodajForm sk = new StavkaKalkulacijeDodajForm(insertKalkulacija());
             sk.ShowDialog();
 
+        }
+
+        private void obrisiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(dgPredhodneKalkulacije.SelectedCells.Count>0)
+            {
+            int rowIndex=dgPredhodneKalkulacije.SelectedCells[0].RowIndex;
+            if(rowIndex>=0)
+            {
+            KalkulacijaDTO kalkulacija =(KalkulacijaDTO) dgPredhodneKalkulacije.Rows[rowIndex].Cells["colObjekat"].Value;
+            if (MessageBox.Show(this, "Jeste li sigurni da zelite da obrisete oznacenu kalkulaciju?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                VeleprodajaUtil.getDAOFactory().getKalkulacijaDAO().delete(kalkulacija);
+            }
+            }
+            }
         }
     }
 }

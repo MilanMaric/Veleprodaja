@@ -13,6 +13,7 @@ namespace Veleprodaja.data.dao.MySqlDao
         private string qGetAll = "select * from kalkulacija_osnovno where PoslovnaGodina=?PoslovnaGodina;";
         private string qInsert = "INSERT INTO `veleprodaja`.`kalkulacija` (`RedniBroj`, `BrojFaktureDobavljaca`) VALUES (?RedniBroj, ?BrojFaktureDobavljaca);";
         private string qUpdate = "UPDATE `veleprodaja`.`kalkulacija` SET `BrojFaktureDobavljaca`=?brojFaktureDobavljaca WHERE `RedniBroj`=?RedniBroj;";
+        private string qDelete ="delete from kalkulacija where RedniBroj=?RedniBroj;";
         public List<KalkulacijaDTO> getAll()
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
@@ -100,6 +101,17 @@ namespace Veleprodaja.data.dao.MySqlDao
         }
 
 
-       
+
+
+
+        public void delete(KalkulacijaDTO kalkulacija)
+        {
+            MySqlConnection connection = ConnectionPool.checkOutConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = qDelete;
+            command.Parameters.AddWithValue("RedniBroj",kalkulacija.RedniBroj);
+            command.ExecuteNonQuery();
+            ConnectionPool.checkInConnection(connection);
+        }
     }
 }
