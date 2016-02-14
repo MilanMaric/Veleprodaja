@@ -69,6 +69,10 @@
             this.colNabavnaCijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVeleprodajnaCijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNetoNabavnaCijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRazlikaUCijeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNabavnaVrijednost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVeleprodajnaVrijednost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIzmjeni = new System.Windows.Forms.DataGridViewButtonColumn();
             this.gbIzabranaRoba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -410,6 +414,10 @@
             this.colNabavnaCijena,
             this.colRabat,
             this.colVeleprodajnaCijena,
+            this.colNetoNabavnaCijena,
+            this.colRazlikaUCijeni,
+            this.colNabavnaVrijednost,
+            this.colVeleprodajnaVrijednost,
             this.colIzmjeni});
             this.dgStavke.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgStavke.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -497,6 +505,34 @@
             this.colVeleprodajnaCijena.Name = "colVeleprodajnaCijena";
             this.colVeleprodajnaCijena.ReadOnly = true;
             // 
+            // colNetoNabavnaCijena
+            // 
+            this.colNetoNabavnaCijena.FillWeight = 70F;
+            this.colNetoNabavnaCijena.HeaderText = "Neto nabavna cijena";
+            this.colNetoNabavnaCijena.Name = "colNetoNabavnaCijena";
+            this.colNetoNabavnaCijena.ReadOnly = true;
+            // 
+            // colRazlikaUCijeni
+            // 
+            this.colRazlikaUCijeni.FillWeight = 70F;
+            this.colRazlikaUCijeni.HeaderText = "Razlika u cijeni";
+            this.colRazlikaUCijeni.Name = "colRazlikaUCijeni";
+            this.colRazlikaUCijeni.ReadOnly = true;
+            // 
+            // colNabavnaVrijednost
+            // 
+            this.colNabavnaVrijednost.FillWeight = 70F;
+            this.colNabavnaVrijednost.HeaderText = "Nabavna vrijednost";
+            this.colNabavnaVrijednost.Name = "colNabavnaVrijednost";
+            this.colNabavnaVrijednost.ReadOnly = true;
+            // 
+            // colVeleprodajnaVrijednost
+            // 
+            this.colVeleprodajnaVrijednost.FillWeight = 70F;
+            this.colVeleprodajnaVrijednost.HeaderText = "VeleprodajnaVrijednost";
+            this.colVeleprodajnaVrijednost.Name = "colVeleprodajnaVrijednost";
+            this.colVeleprodajnaVrijednost.ReadOnly = true;
+            // 
             // colIzmjeni
             // 
             this.colIzmjeni.HeaderText = "Izmjeni";
@@ -578,6 +614,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNabavnaCijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRabat;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVeleprodajnaCijena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNetoNabavnaCijena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRazlikaUCijeni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNabavnaVrijednost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVeleprodajnaVrijednost;
         private System.Windows.Forms.DataGridViewButtonColumn colIzmjeni;
     }
 }

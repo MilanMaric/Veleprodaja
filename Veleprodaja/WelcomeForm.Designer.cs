@@ -37,7 +37,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(801, 515);
             this.Name = "WelcomeForm";
-            this.Text = "WelcomeForm";
+            this.Text = "Veleprodaja";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -70,6 +71,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbxKolicina = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgStavke)).BeginInit();
             this.gbIzabranaRoba.SuspendLayout();
             this.gbStavka.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -350,7 +354,7 @@
             // 
             // btnPonistiUnos
             // 
-            this.btnPonistiUnos.Location = new System.Drawing.Point(581, 157);
+            this.btnPonistiUnos.Location = new System.Drawing.Point(529, 145);
             this.btnPonistiUnos.Name = "btnPonistiUnos";
             this.btnPonistiUnos.Size = new System.Drawing.Size(75, 23);
             this.btnPonistiUnos.TabIndex = 19;
@@ -359,7 +363,7 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(683, 160);
+            this.btnDodaj.Location = new System.Drawing.Point(657, 146);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(75, 20);
             this.btnDodaj.TabIndex = 17;
@@ -370,7 +374,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 27);
+            this.label1.Location = new System.Drawing.Point(30, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 3;
@@ -378,7 +382,7 @@
             // 
             // tbxSifraRobe
             // 
-            this.tbxSifraRobe.Location = new System.Drawing.Point(101, 24);
+            this.tbxSifraRobe.Location = new System.Drawing.Point(94, 12);
             this.tbxSifraRobe.Name = "tbxSifraRobe";
             this.tbxSifraRobe.Size = new System.Drawing.Size(200, 20);
             this.tbxSifraRobe.TabIndex = 2;
@@ -390,7 +394,7 @@
             this.gbIzabranaRoba.Controls.Add(this.lblRobaNaziv);
             this.gbIzabranaRoba.Controls.Add(this.label4);
             this.gbIzabranaRoba.Controls.Add(this.label3);
-            this.gbIzabranaRoba.Location = new System.Drawing.Point(15, 65);
+            this.gbIzabranaRoba.Location = new System.Drawing.Point(12, 49);
             this.gbIzabranaRoba.Name = "gbIzabranaRoba";
             this.gbIzabranaRoba.Size = new System.Drawing.Size(332, 104);
             this.gbIzabranaRoba.TabIndex = 4;
@@ -441,7 +445,7 @@
             this.gbStavka.Controls.Add(this.label6);
             this.gbStavka.Controls.Add(this.tbxKolicina);
             this.gbStavka.Controls.Add(this.label2);
-            this.gbStavka.Location = new System.Drawing.Point(420, 24);
+            this.gbStavka.Location = new System.Drawing.Point(400, 12);
             this.gbStavka.Name = "gbStavka";
             this.gbStavka.Size = new System.Drawing.Size(338, 127);
             this.gbStavka.TabIndex = 18;
@@ -497,6 +501,20 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Kolicina";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.obrisiToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 26);
+            // 
+            // obrisiToolStripMenuItem
+            // 
+            this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
+            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.obrisiToolStripMenuItem.Text = "Obrisi";
+            this.obrisiToolStripMenuItem.Click += new System.EventHandler(this.obrisiToolStripMenuItem_Click);
+            // 
             // StavkaOtpremniceDodajForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,6 +542,7 @@
             this.gbIzabranaRoba.PerformLayout();
             this.gbStavka.ResumeLayout(false);
             this.gbStavka.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,5 +592,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Iznos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIznosSaRabatom;
         private System.Windows.Forms.DataGridViewButtonColumn colIzmjeni;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem obrisiToolStripMenuItem;
     }
 }

@@ -144,5 +144,10 @@ namespace Veleprodaja.view_dodaj
                 }
             }
         }
+
+        private void obrisiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

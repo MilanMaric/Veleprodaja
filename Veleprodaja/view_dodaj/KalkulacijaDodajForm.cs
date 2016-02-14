@@ -82,10 +82,8 @@ namespace Veleprodaja.view_dodaj
                 {
                     KalkulacijaDTO kalkulacija = (KalkulacijaDTO)dgPredhodneKalkulacije.Rows[e.RowIndex].Cells["colObjekat"].Value;
                     StavkaKalkulacijeDodajForm skdf = new StavkaKalkulacijeDodajForm(kalkulacija);
-                    this.Hide();
                     skdf.ShowDialog();
                     popuniPredhodneKalkulacije();
-                    this.Show();
                 }
             }
             if (e.ColumnIndex == 7)
@@ -131,9 +129,7 @@ namespace Veleprodaja.view_dodaj
         private void button2_Click(object sender, EventArgs e)
         {
             StavkaKalkulacijeDodajForm sk = new StavkaKalkulacijeDodajForm(insertKalkulacija());
-            this.Hide();
             sk.ShowDialog();
-            this.Show();
 
         }
     }

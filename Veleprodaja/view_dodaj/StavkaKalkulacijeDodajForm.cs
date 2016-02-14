@@ -35,7 +35,7 @@ namespace Veleprodaja.view_dodaj
             List<StavkaKalkulacijeDTO> listaStavki = VeleprodajaUtil.getDAOFactory().getStavkaKalkulacijeDAO().getByKalkulacija(kalkulacija);
             foreach (StavkaKalkulacijeDTO stavka in listaStavki)
             {
-                dgStavke.Rows.Add(new object[] { stavka, stavka.Roba.Naziv, stavka.Kolicina, stavka.NabavnaCijena, stavka.Rabat, stavka.VeleprodajnaCijena, "Izmjeni" });
+                dgStavke.Rows.Add(new object[] { stavka, stavka.Roba.Naziv, stavka.Kolicina, stavka.NabavnaCijena, stavka.Rabat, stavka.VeleprodajnaCijena,stavka.NetoNabavnaCijena,stavka.RazlikaUCijeni,stavka.NabavnaVrijednost,stavka.VeleprodajnaVrijednost, "Izmjeni" });
             }
         }
 
@@ -175,7 +175,7 @@ namespace Veleprodaja.view_dodaj
         {
             if (e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 10)
                 {
                     stavka = (StavkaKalkulacijeDTO)dgStavke.Rows[e.RowIndex].Cells["colObject"].Value;
                     fillControls();
