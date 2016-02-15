@@ -13,7 +13,8 @@ namespace Veleprodaja.data.dao.MySqlDao
         private string qGetAll = "select * from kalkulacija_osnovno where PoslovnaGodina=?PoslovnaGodina;";
         private string qInsert = "INSERT INTO `veleprodaja`.`kalkulacija` (`RedniBroj`, `BrojFaktureDobavljaca`) VALUES (?RedniBroj, ?BrojFaktureDobavljaca);";
         private string qUpdate = "UPDATE `veleprodaja`.`kalkulacija` SET `BrojFaktureDobavljaca`=?brojFaktureDobavljaca WHERE `RedniBroj`=?RedniBroj;";
-        private string qDelete ="delete from kalkulacija where RedniBroj=?RedniBroj;";
+        private string qDelete ="delete from stavka_knjige_trgovine_na_veliko where RedniBroj=?RedniBroj;";
+
         public List<KalkulacijaDTO> getAll()
         {
             MySqlConnection connection = ConnectionPool.checkOutConnection();
