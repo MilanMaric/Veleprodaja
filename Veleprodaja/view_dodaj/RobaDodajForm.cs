@@ -31,7 +31,7 @@ namespace Veleprodaja
             RobaDTO roba = new RobaDTO();
             if (string.IsNullOrEmpty(tbxSifra.Text))
             {
-                return null;
+                roba.SifraRoba = 0;
             }
             else
             {

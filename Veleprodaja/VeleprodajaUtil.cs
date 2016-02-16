@@ -59,14 +59,14 @@ namespace Veleprodaja
             }
         }
 
-        public static void initPartnerComboBox(ComboBox cb, int jib)
+        public static void initPartnerComboBox(ComboBox cb, string jib)
         {
             cb.Items.Clear();
             List<PartnerDTO> lista = VeleprodajaUtil.getDAOFactory().getPartnerDAO().getAll();
             foreach (PartnerDTO partner in lista)
             {
                 cb.Items.Add(partner);
-                if (partner.Jib == jib)
+                if (partner.Jib.Equals(jib))
                 {
                     cb.SelectedIndex = cb.Items.Count - 1;
                 }

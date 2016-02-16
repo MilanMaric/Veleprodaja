@@ -19,7 +19,7 @@ namespace Veleprodaja.view_dodaj
             InitializeComponent();
             initKalkulacijaColumns();
             popuniPredhodneKalkulacije();
-            VeleprodajaUtil.initPartnerComboBox(cbDobavljac, -1);
+            VeleprodajaUtil.initPartnerComboBox(cbDobavljac, "-1");
         }
 
         private void initKalkulacijaColumns()

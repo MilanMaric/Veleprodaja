@@ -49,7 +49,7 @@ namespace Veleprodaja.data.dao.MySqlDao
         public static PartnerDTO readerToPartnerDTO(MySqlDataReader reader)
         {
             PartnerDTO partner = new PartnerDTO();
-            partner.Jib = reader.GetInt32("JIB");
+            partner.Jib = reader.GetString("JIB");
             partner.Adresa = reader["Adresa"].ToString();
             partner.Naziv = reader["Naziv"].ToString();
             return partner;

@@ -8,9 +8,9 @@ namespace Veleprodaja.data.dto
 {
     public class PartnerDTO
     {
-        private int jib;
+        private string jib;
 
-        public int Jib
+        public string Jib
         {
             get { return jib; }
             set { jib = value; }

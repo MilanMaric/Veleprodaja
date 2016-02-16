@@ -74,9 +74,9 @@ CREATE TABLE OTPREMNICA
 
 CREATE TABLE PARTNER
 (
-	JIB                   INTEGER NOT NULL,
-	Naziv                 CHAR(64) NOT NULL,
-	Adresa                CHAR(64) NOT NULL,
+	JIB                    CHAR(13) NOT NULL,
+	Naziv                 VARCHAR(64) NOT NULL,
+	Adresa                VARCHAR(64) NOT NULL,
 	PostanskiBroj         INTEGER NOT NULL,
 	 PRIMARY KEY (JIB)
 )
@@ -97,8 +97,8 @@ CREATE TABLE RACUN
 CREATE TABLE ROBA
 (
 	SifraRoba             INTEGER NOT NULL auto_increment,
-	Naziv                 CHAR(64) NOT NULL,
-	SifraJediniceMjere    CHAR(64) NOT NULL,
+	Naziv                 VARCHAR(64) NOT NULL,
+	SifraJediniceMjere    VARCHAR(64) NOT NULL,
 	 PRIMARY KEY (SifraRoba)
 )
 ;
@@ -123,7 +123,7 @@ CREATE TABLE STAVKA_KNJIGE_TRGOVINE_NA_VELIKO
 (
 	RedniBroj             INTEGER NOT NULL auto_increment,
 	PoslovnaGodina        INTEGER NOT NULL,
-	JIB                   INTEGER NULL,
+	JIB                   CHAR(13) NOT NULL,
 	Datum                 DATE NULL,
 	 PRIMARY KEY (RedniBroj)
 )
@@ -169,8 +169,8 @@ CREATE TABLE TELEFON_BANKE
 
 CREATE TABLE TELEFON_PARTNERA
 (
-	BrojTelefona          CHAR(64) NOT NULL,
-	JIB                   INTEGER NOT NULL,
+	BrojTelefona          VARCHAR(64) NOT NULL,
+	JIB                   CHAR(13) NOT NULL,
 	 PRIMARY KEY (BrojTelefona,JIB)
 )
 ;
@@ -181,7 +181,7 @@ CREATE TABLE ZIRO_RACUN
 (
 	IdBanka               INTEGER NOT NULL,
 	BrojZiroRacuna        CHAR(64) NOT NULL,
-	JIB                   INTEGER NOT NULL,
+	JIB                    CHAR(13) NOT NULL,
 	 PRIMARY KEY (BrojZiroRacuna,JIB,IdBanka)
 )
 ;

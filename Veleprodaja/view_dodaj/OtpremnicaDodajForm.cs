@@ -16,7 +16,7 @@ namespace Veleprodaja.view_dodaj
         public OtpremnicaDodajForm()
         {
             InitializeComponent();
-            VeleprodajaUtil.initPartnerComboBox(cbKupac, -1);
+            VeleprodajaUtil.initPartnerComboBox(cbKupac, "-1");
             initOtpremnicaColumns();
             fillOtpremnice();
         }

@@ -40,7 +40,7 @@ namespace Veleprodaja
         private PartnerDTO fillObject()
         {
             PartnerDTO partner = new PartnerDTO();
-            partner.Jib = int.Parse(tbxJib.Text);
+            partner.Jib = tbxJib.Text;
             partner.Naziv = tbxNaziv.Text;
             partner.Adresa = tbxAdresa.Text;
             partner.Mjesto =(MjestoDTO) cbMjesto.Items[cbMjesto.SelectedIndex];

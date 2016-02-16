@@ -135,7 +135,7 @@ create trigger stavka_otpremnice_bck_delete before delete on stavka_otpremnice
 for each row
 insert into stavka_otpremnice_backup(RedniBroj,SifraRoba,Kolicina,VeleprodajnaCijena,Rabat,Vrijeme) values (old.RedniBroj,old.SifraRoba,old.Kolicina,old.VeleprodajnaCijena,old.Rabat,sysdate());
 
-
+drop trigger if exists stavka_knjige_delete;
 delimiter $$
 create trigger stavka_knjige_delete after delete on stavka_knjige_trgovine_na_veliko
 for each row
@@ -145,6 +145,42 @@ delete from otpremnica where RedniBroj=old.RedniBroj;
 delete from nivelacija where RedniBroj=old.RedniBroj;
 end $$
 delimiter ;
+
+
+drop procedure if exists inserting_otpremnica;
+delimiter $$ 
+create procedure inserting_otpremnica(in godina integer, in jibPartnera integer, in datumOtpremnice date,out RedniBroj integer)
+begin
+insert into stavka_knjige_trgovine_na_veliko (`PoslovnaGodina`,`JIB`,`Datum`) values (godina,jibPartnera,datumOtpremnice);
+set RedniBroj=LAST_INSERT_ID();
+insert into otpremnica (`RedniBroj`) values(RedniBroj);
+end$$
+delimiter ;
+
+drop procedure if exists inserting_kalkulacija;
+delimiter $$ 
+create procedure inserting_kalkulacija(in godina integer, in jibPartnera integer, in datumOtpremnice date,in brojFak varchar(50),out RedniBroj integer)
+begin
+insert into stavka_knjige_trgovine_na_veliko (`PoslovnaGodina`,`JIB`,`Datum`) values (godina,jibPartnera,datumOtpremnice);
+set RedniBroj=LAST_INSERT_ID();
+insert into kalkulacija (`RedniBroj`,`BrojFaktureDobavljaca`) values(RedniBroj,brojFak);
+end$$
+delimiter ;
+
+
+drop trigger if exists inserting_stavka_knjige;
+delimiter $$
+create trigger inserting_stavka_knjige before insert on stavka_knjige_trgovine_na_veliko
+for each row
+begin
+declare s int;
+set s=(select count(PoslovnaGodina) from knjiga_trgovine_na_veliko);
+if (s<1) then
+insert into knjiga_trgovine_na_veliko (PoslovnaGodina) values (new.PoslovnaGodina);
+end if;
+end$$
+delimiter ;
+
 
 
 

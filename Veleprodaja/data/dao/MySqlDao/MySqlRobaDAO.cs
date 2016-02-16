@@ -58,7 +58,14 @@ namespace Veleprodaja.data.dao.MySqlDao
             MySqlConnection connection = ConnectionPool.checkOutConnection();
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = qInsert;
-            command.Parameters.AddWithValue("sifra", roba.SifraRoba);
+            if (roba.SifraRoba != 0)
+            {
+                command.Parameters.AddWithValue("sifra", roba.SifraRoba);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("sifra", null);
+            }
             command.Parameters.AddWithValue("naziv", roba.Naziv);
             command.Parameters.AddWithValue("jm", roba.JedinicaMjere.SifraJediniceMjere);
             int id=command.ExecuteNonQuery();

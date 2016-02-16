@@ -87,10 +87,7 @@ namespace Veleprodaja.view_dodaj
             {
                 return false;
             }
-            if (string.IsNullOrEmpty(tbxRabat.Text))
-            {
-                return false;
-            }
+            
             double kolicina;
             if (!double.TryParse(tbxKolicina.Text, out kolicina))
             {
@@ -120,6 +117,10 @@ namespace Veleprodaja.view_dodaj
                 {
                     stavka = new StavkaOtpremniceDTO();
                     fillObject(stavka);
+                    if (string.IsNullOrEmpty(tbxRabat.Text))
+                    {
+                        stavka.Rabat = 0.0;
+                    }
                     VeleprodajaUtil.getDAOFactory().getStavkaOtpremniceDAO().insert(stavka);
                     stavka = null;
                     emptyControlls();
