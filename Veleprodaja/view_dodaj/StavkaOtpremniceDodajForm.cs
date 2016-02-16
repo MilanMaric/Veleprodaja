@@ -72,7 +72,14 @@ namespace Veleprodaja.view_dodaj
             stavka.Roba = izabranaRoba;
             stavka.VeleprodajnaCijena = izabranaRoba.PoslednjaCijena;
             stavka.Kolicina=double.Parse(tbxKolicina.Text);
-            stavka.Rabat = double.Parse(tbxRabat.Text);
+            if (string.IsNullOrEmpty(tbxRabat.Text))
+            {
+                stavka.Rabat = 0;
+            }
+            else
+            {
+                stavka.Rabat = double.Parse(tbxRabat.Text);
+            }
         }
 
 

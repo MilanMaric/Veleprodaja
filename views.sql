@@ -182,8 +182,33 @@ end$$
 delimiter ;
 
 
+drop procedure if exists kreiranje_racuna;
+delimiter $$
+create procedure kreiranje_racuna(in dat date,in j char(13))
+begin
+declare rbRacuna integer;
+declare rb int;
+DECLARE done INT DEFAULT FALSE;
+declare broj int;
+declare cur1 cursor for select otpremnica.RedniBroj from otpremnica left join stavka_knjige_trgovine_na_veliko on otpremnica.RedniBroj=stavka_knjige_trgovine_na_veliko.RedniBroj where jib=j;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+set broj=(select count(otpremnica.RedniBroj) from otpremnica left join stavka_knjige_trgovine_na_veliko on otpremnica.RedniBroj=stavka_knjige_trgovine_na_veliko.RedniBroj where jib=j);
+select broj;
+if(broj>0) then
+insert into Racun(Datum) values (dat);
+set rbRacuna=LAST_INSERT_ID();
 
+open cur1;
+citanje: loop
+fetch cur1 into rb;
+if done then
+leave citanje;
+end if;
+update otpremnica set `RedniBrojRacuna`=rbRacuna where RedniBroj=rb;
+end loop;
 
-
-
+close cur1;
+end if;
+end $$
+delimiter ;
 
